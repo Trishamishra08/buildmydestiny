@@ -97,6 +97,61 @@ body.bmd-website section {
   animation: bmd-stripe-move 1.1s linear infinite;
 }
 
+.bmd-coming-soon {
+  position: relative;
+  overflow: hidden;
+  background: #111111;
+  padding: 0.55rem 1.35rem 0.55rem 1.45rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bmd-coming-soon-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+}
+
+.bmd-coming-soon-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 11px;
+}
+
+.bmd-coming-soon-rail-left {
+  left: 0;
+}
+
+.bmd-coming-soon-rail-right {
+  right: 0;
+}
+
+@keyframes bmd-soon-shine {
+  0% { transform: translateX(-120%); }
+  40%, 100% { transform: translateX(180%); }
+}
+
+.bmd-coming-soon-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 180, 0, 0.18) 50%, transparent 70%);
+  animation: bmd-soon-shine 2.8s ease-in-out 1.1s infinite;
+}
+
+@keyframes bmd-soon-pulse {
+  0%, 100% { letter-spacing: 0.04em; }
+  50% { letter-spacing: 0.07em; }
+}
+
+.bmd-coming-soon-title {
+  animation: bmd-soon-pulse 2.6s ease-in-out 1.2s infinite;
+}
+
 @keyframes bmd-float {
   0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
   50% { transform: translateY(-10px) rotate(var(--tilt, 0deg)); }
@@ -182,22 +237,23 @@ body.bmd-website section {
 .bmd-hero-explore {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   height: 52px;
-  padding: 0 8px 0 22px;
+  padding: 0 8px 0 16px;
   background: #ffb400;
   color: #111;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   border-radius: 6px;
+  white-space: nowrap;
 }
 
 .bmd-hero-explore span {
   display: inline-flex;
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   align-items: center;
   justify-content: center;
   background: #fff;
@@ -293,8 +349,13 @@ body.bmd-website section {
   50% { text-shadow: none; }
 }
 
-.bmd-heading-accent {
-  animation: none;
+.bmd-material-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.bmd-card-img {
+  transform-origin: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -302,7 +363,9 @@ body.bmd-website section {
   .bmd-float,
   .bmd-float-slow,
   .bmd-pulse-line,
-  .bmd-heading-accent {
+  .bmd-heading-accent,
+  .bmd-coming-soon-shine,
+  .bmd-coming-soon-title {
     animation: none !important;
   }
 }

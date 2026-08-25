@@ -1,6 +1,5 @@
 import React from 'react';
 import PageHero from '../components/PageHero';
-import Reveal from '../components/Reveal';
 import ScrollFillHeading from '../components/ScrollFillHeading';
 import MaterialCard from '../components/MaterialCard';
 import { useWebsiteContent } from '../cms';
@@ -16,16 +15,16 @@ const HowItWorks = () => {
         <p className="max-w-3xl text-white/70 leading-relaxed mb-10 text-sm md:text-base">{why.p1} {why.p2}</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
           {howSteps.map((step, idx) => (
-            <Reveal key={step.n} delay={idx * 0.05}>
-              <MaterialCard
-                image={step.image}
-                alt={step.title}
-                n={step.n}
-                title={step.title}
-                text={step.text}
-                variant="dark"
-              />
-            </Reveal>
+            <MaterialCard
+              key={step.n}
+              image={step.image}
+              alt={step.title}
+              n={step.n}
+              title={step.title}
+              text={step.text}
+              variant="dark"
+              delay={idx * 0.06}
+            />
           ))}
         </div>
         <ScrollFillHeading as="h2" theme="dark" className="text-xl md:text-2xl mt-10">{why.focus}</ScrollFillHeading>

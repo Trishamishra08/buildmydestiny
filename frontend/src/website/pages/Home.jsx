@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Package, Award, Truck, Headphones, ArrowRight, Play, ShieldCheck } from 'lucide-react';
+import { Package, Award, Truck, Headphones, ArrowRight, ShieldCheck } from 'lucide-react';
 import NotifyForm from '../components/NotifyForm';
 import Reveal from '../components/Reveal';
 import ScrollFillHeading from '../components/ScrollFillHeading';
 import HeroBanner from '../components/HeroBanner';
-import MaterialCard from '../components/MaterialCard';
+import MaterialCard, { ImageTile } from '../components/MaterialCard';
 import { useWebsiteContent } from '../cms';
 import { APP_HREF } from '../data/content';
 
@@ -91,23 +91,34 @@ const Home = () => {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.38 }}
-              className="mt-8 flex flex-wrap items-center gap-5"
+              initial={{ opacity: 0, y: 22, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.55, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-7 flex flex-wrap items-stretch gap-3"
             >
-              <Link to="/products" className="bmd-hero-explore">
+              <div className="bmd-coming-soon">
+                <div className="bmd-hazard-thin bmd-coming-soon-rail bmd-coming-soon-rail-left bmd-hazard-animated" aria-hidden="true" />
+                <div className="bmd-hazard-thin bmd-coming-soon-rail bmd-coming-soon-rail-right bmd-hazard-animated" aria-hidden="true" />
+                <div className="bmd-coming-soon-shine" />
+                <div className="relative z-[1] text-center">
+                  <div className="bmd-display bmd-coming-soon-title text-white text-[22px] md:text-[26px] leading-none">
+                    {home.comingSoon}
+                  </div>
+                  <div className="mt-1 flex items-center justify-center gap-2">
+                    <span className="h-px w-5 bg-[#FFB400]" />
+                    <span className="text-white text-[9px] font-bold tracking-[0.22em] uppercase">
+                      {home.stayTuned}
+                    </span>
+                    <span className="h-px w-5 bg-[#FFB400]" />
+                  </div>
+                </div>
+              </div>
+              <Link to="/products" className="bmd-hero-explore self-stretch">
                 {home.exploreCta}
                 <span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={14} />
                 </span>
               </Link>
-              <a href="#notify" className="inline-flex items-center gap-3 text-white text-[12px] font-bold uppercase tracking-[0.16em]">
-                <span className="w-11 h-11 rounded-full border border-white/80 flex items-center justify-center">
-                  <Play size={16} fill="white" />
-                </span>
-                {home.watchCta}
-              </a>
             </motion.div>
 
             <aside className="bmd-trust-card mt-8 p-5 lg:hidden">
@@ -181,14 +192,14 @@ const Home = () => {
 
           <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-5 gap-4">
             {benefits.map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.06}>
-                <MaterialCard
-                  image={item.image}
-                  alt={item.title}
-                  title={item.title}
-                  text={item.text}
-                />
-              </Reveal>
+              <MaterialCard
+                key={item.title}
+                image={item.image}
+                alt={item.title}
+                title={item.title}
+                text={item.text}
+                delay={idx * 0.07}
+              />
             ))}
           </div>
           <p className="mt-8">
@@ -212,16 +223,16 @@ const Home = () => {
           </div>
           <div className="grid md:grid-cols-5 gap-4">
             {howSteps.map((step, idx) => (
-              <Reveal key={step.n} delay={idx * 0.07}>
-                <MaterialCard
-                  image={step.image}
-                  alt={step.title}
-                  n={step.n}
-                  title={step.title}
-                  text={step.text}
-                  variant="dark"
-                />
-              </Reveal>
+              <MaterialCard
+                key={step.n}
+                image={step.image}
+                alt={step.title}
+                n={step.n}
+                title={step.title}
+                text={step.text}
+                variant="dark"
+                delay={idx * 0.07}
+              />
             ))}
           </div>
         </div>
@@ -242,14 +253,14 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {materials.categories.slice(0, 5).map((cat, idx) => (
-              <Reveal key={cat.name} delay={idx * 0.05}>
-                <Link to="/products" className="group relative h-36 overflow-hidden block border-2 border-[#FFB400]">
-                  <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className={`absolute bottom-0 left-0 right-0 px-3 py-2 font-bold uppercase tracking-wide text-sm ${idx % 2 === 0 ? 'bg-[#FFB400] text-black' : 'bg-black text-[#FFB400]'}`}>
-                    {cat.name}
-                  </div>
-                </Link>
-              </Reveal>
+              <ImageTile
+                key={cat.name}
+                to="/products"
+                image={cat.image}
+                name={cat.name}
+                delay={idx * 0.06}
+                darkLabel={idx % 2 === 1}
+              />
             ))}
           </div>
         </div>
