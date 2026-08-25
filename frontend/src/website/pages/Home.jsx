@@ -6,7 +6,7 @@ import NotifyForm from '../components/NotifyForm';
 import Reveal from '../components/Reveal';
 import ScrollFillHeading from '../components/ScrollFillHeading';
 import HeroBanner from '../components/HeroBanner';
-import MaterialCard, { cardTone } from '../components/MaterialCard';
+import MaterialCard from '../components/MaterialCard';
 import { useWebsiteContent } from '../cms';
 import { APP_HREF } from '../data/content';
 
@@ -62,16 +62,16 @@ const Home = () => {
               </span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.08 }}
-              className="bmd-stamp text-white text-[52px] sm:text-[68px] md:text-[84px] lg:text-[96px] leading-[0.9]"
+            <ScrollFillHeading
+              as="h1"
+              variant="hero"
+              triggerRef={heroRef}
+              className="text-[52px] sm:text-[68px] md:text-[84px] lg:text-[96px] leading-[0.9] bg-transparent"
             >
               <span className="block">{home.title?.[0]}</span>
-              <span className="block text-[#FFB400]">{home.title?.[1]}</span>
+              <span className="block bmd-accent">{home.title?.[1]}</span>
               <span className="block">{home.title?.[2]}</span>
-            </motion.h1>
+            </ScrollFillHeading>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -187,7 +187,6 @@ const Home = () => {
                   alt={item.title}
                   title={item.title}
                   text={item.text}
-                  tone={cardTone(idx)}
                 />
               </Reveal>
             ))}
@@ -220,7 +219,7 @@ const Home = () => {
                   n={step.n}
                   title={step.title}
                   text={step.text}
-                  tone={cardTone(idx)}
+                  variant="dark"
                 />
               </Reveal>
             ))}
@@ -258,7 +257,7 @@ const Home = () => {
 
       <section className="bg-black py-12 md:py-14">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-center">
-          <Reveal>
+          <div>
             <p className="text-[#FFB400] text-[11px] font-bold tracking-[0.28em] uppercase mb-2">The App</p>
             <ScrollFillHeading as="h2" theme="dark" className="text-2xl md:text-4xl max-w-3xl">
               {appSection.title}
@@ -276,17 +275,15 @@ const Home = () => {
                 Download App
               </a>
             </div>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <div className="bg-[#FFB400] p-5 w-full max-w-xs mx-auto text-center">
-              <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrUrl)}`}
-                alt="App QR code"
-                className="w-36 h-36 mx-auto"
-              />
-              <p className="mt-3 text-black text-[11px] font-bold uppercase tracking-[0.16em]">{appSection.qr}</p>
-            </div>
-          </Reveal>
+          </div>
+          <div className="bg-white p-5 w-full max-w-xs mx-auto text-center border border-white/10">
+            <img
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrUrl)}`}
+              alt="App QR code"
+              className="w-36 h-36 mx-auto"
+            />
+            <p className="mt-3 text-black text-[11px] font-bold uppercase tracking-[0.16em]">{appSection.qr}</p>
+          </div>
         </div>
       </section>
 

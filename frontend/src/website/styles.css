@@ -23,13 +23,22 @@
 }
 
 .bmd-stamp::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.18;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.85'/%3E%3C/svg%3E");
+  content: none;
+}
+
+.bmd-hero-heading {
+  background: transparent !important;
+  box-shadow: none;
+}
+
+.bmd-hero-heading .block,
+.bmd-hero-heading .bmd-hero-char {
+  background: transparent;
+}
+
+.bmd-hero-heading .bmd-hero-char {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 
 .bmd-display {
@@ -228,16 +237,23 @@ body.bmd-website section {
 }
 
 .bmd-scroll-heading-dark .bmd-word-dim {
-  color: #5a5a5a;
+  color: rgba(255, 255, 255, 0.22);
 }
 
 .bmd-scroll-heading-hero .bmd-word-dim {
-  color: #ffb400;
+  color: rgba(255, 255, 255, 0.28);
 }
 
-.bmd-scroll-heading-hero .bmd-word-lit,
-.bmd-scroll-heading-hero .bmd-accent .bmd-word-lit {
+.bmd-scroll-heading-hero .bmd-accent .bmd-word-dim {
+  color: rgba(255, 180, 0, 0.32);
+}
+
+.bmd-scroll-heading-hero .bmd-word-lit {
   color: #ffffff;
+}
+
+.bmd-scroll-heading-hero .bmd-accent .bmd-word-lit {
+  color: #ffb400;
 }
 
 .bmd-scroll-heading-light .bmd-word-dim {
@@ -262,11 +278,31 @@ body.bmd-website section {
   color: #ffb400;
 }
 
+.bmd-scroll-heading.bmd-scroll-heading-hero .bmd-word-lit {
+  clip-path: inset(0 0% 0 0);
+  opacity: 1;
+  color: #ffffff;
+}
+
+.bmd-scroll-heading.bmd-scroll-heading-hero .bmd-accent .bmd-word-lit {
+  color: #ffb400;
+}
+
+@keyframes bmd-heading-glow {
+  0%, 100% { text-shadow: none; }
+  50% { text-shadow: none; }
+}
+
+.bmd-heading-accent {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bmd-hazard-animated,
   .bmd-float,
   .bmd-float-slow,
-  .bmd-pulse-line {
+  .bmd-pulse-line,
+  .bmd-heading-accent {
     animation: none !important;
   }
 }

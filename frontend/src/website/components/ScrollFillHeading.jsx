@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useMemo, useRef } from 'react';
 import { getGsap } from '../lib/gsapScroll';
 
 const DIM = {
-  dark: '#5a5a5a',
+  dark: 'rgba(255, 255, 255, 0.22)',
   light: 'rgba(17,17,17,0.22)',
 };
 
@@ -25,7 +25,7 @@ const flattenKey = (node) => {
 };
 
 const splitString = (text, inAccent, theme, keyPrefix, variant) => {
-  const lit = variant === 'hero' ? '#FFFFFF' : inAccent ? ACCENT : LIT[theme] || LIT.dark;
+  const lit = inAccent ? ACCENT : variant === 'hero' ? '#FFFFFF' : LIT[theme] || LIT.dark;
   return text.split(/(\s+)/).map((part, index) => {
     if (!part) return null;
     if (/^\s+$/.test(part)) {
@@ -76,6 +76,7 @@ const ScrollFillHeading = ({
 }) => {
   const ref = useRef(null);
   const Tag = as;
+  const isHero = variant === 'hero';
   const contentKey = `${flattenKey(children)}|${theme}|${variant}`;
   const split = useMemo(() => splitNodes(children, false, theme, 'h', variant), [contentKey]);
 
@@ -89,12 +90,6 @@ const ScrollFillHeading = ({
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
       words.forEach((word) => {
-        if (variant === 'hero') {
-          word.style.clipPath = 'inset(0 100% 0 0)';
-          word.style.webkitClipPath = 'inset(0 100% 0 0)';
-          word.style.opacity = '1';
-          return;
-        }
         word.style.clipPath = 'inset(0 0% 0 0)';
         word.style.webkitClipPath = 'inset(0 0% 0 0)';
         word.style.opacity = '1';
@@ -104,32 +99,51 @@ const ScrollFillHeading = ({
     }
 
     const { gsap, ScrollTrigger } = getGsap();
-    const trigger = triggerRef?.current || (variant === 'hero' ? root.closest('section') : root) || root;
+    const trigger = triggerRef?.current || (isHero ? root.closest('section') : root) || root;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
           trigger,
-          start: variant === 'hero' ? 'top top' : 'top 88%',
-          end: variant === 'hero' ? '+=75%' : 'top 28%',
-          scrub: 0.75,
+          start: isHero ? 'top top' : 'top 85%',
+          end: isHero ? '+=70%' : 'top 30%',
+          scrub: 0.85,
           invalidateOnRefresh: true,
         },
       });
 
       words.forEach((word, index) => {
-        const isHero = variant === 'hero';
+        const lit = word.getAttribute('data-lit') || LIT[theme];
+        if (isHero) {
+          tl.fromTo(
+            word,
+            {
+              opacity: 1,
+              color: lit,
+              clipPath: 'inset(0 0% 0 0)',
+              webkitClipPath: 'inset(0 0% 0 0)',
+            },
+            {
+              opacity: 1,
+              color: lit,
+              clipPath: 'inset(0 100% 0 0)',
+              webkitClipPath: 'inset(0 100% 0 0)',
+              duration: 1,
+            },
+            index * 0.32
+          );
+          return;
+        }
         tl.fromTo(
           word,
           {
-            color: isHero ? '#FFB400' : DIM[theme] || DIM.dark,
-            opacity: isHero ? 1 : 0.35,
+            opacity: 0.28,
             clipPath: 'inset(0 100% 0 0)',
             webkitClipPath: 'inset(0 100% 0 0)',
           },
           {
-            color: word.getAttribute('data-lit') || LIT[theme],
+            color: lit,
             opacity: 1,
             clipPath: 'inset(0 0% 0 0)',
             webkitClipPath: 'inset(0 0% 0 0)',
@@ -144,12 +158,12 @@ const ScrollFillHeading = ({
     document.fonts?.ready?.then(() => ScrollTrigger.refresh());
 
     return () => ctx.revert();
-  }, [contentKey, theme, variant, triggerRef]);
+  }, [contentKey, theme, variant, triggerRef, isHero]);
 
   return (
     <Tag
       ref={ref}
-      className={`bmd-scroll-heading bmd-scroll-heading-${theme}${variant === 'hero' ? ' bmd-scroll-heading-hero' : ''} ${className}`}
+      className={`bmd-scroll-heading bmd-scroll-heading-${isHero ? 'hero' : theme}${isHero ? ' bmd-hero-heading' : ''} ${className}`}
       style={style}
     >
       {split}

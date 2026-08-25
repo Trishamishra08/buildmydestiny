@@ -2,7 +2,7 @@ import React from 'react';
 import PageHero from '../components/PageHero';
 import Reveal from '../components/Reveal';
 import ScrollFillHeading from '../components/ScrollFillHeading';
-import MaterialCard, { cardTone } from '../components/MaterialCard';
+import MaterialCard from '../components/MaterialCard';
 import { useWebsiteContent } from '../cms';
 
 const HowItWorks = () => {
@@ -23,7 +23,7 @@ const HowItWorks = () => {
                 n={step.n}
                 title={step.title}
                 text={step.text}
-                tone={cardTone(idx)}
+                variant="dark"
               />
             </Reveal>
           ))}
