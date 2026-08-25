@@ -25,7 +25,7 @@ const flattenKey = (node) => {
 };
 
 const splitString = (text, inAccent, theme, keyPrefix, variant) => {
-  const lit = variant === 'hero' ? LIT.dark : inAccent ? ACCENT : LIT[theme] || LIT.dark;
+  const lit = variant === 'hero' ? '#FFFFFF' : inAccent ? ACCENT : LIT[theme] || LIT.dark;
   return text.split(/(\s+)/).map((part, index) => {
     if (!part) return null;
     if (/^\s+$/.test(part)) {
@@ -123,7 +123,7 @@ const ScrollFillHeading = ({
         tl.fromTo(
           word,
           {
-            color: isHero ? '#ffffff' : DIM[theme] || DIM.dark,
+            color: isHero ? '#FFB400' : DIM[theme] || DIM.dark,
             opacity: isHero ? 1 : 0.35,
             clipPath: 'inset(0 100% 0 0)',
             webkitClipPath: 'inset(0 100% 0 0)',

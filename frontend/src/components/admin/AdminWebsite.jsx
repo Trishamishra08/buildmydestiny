@@ -361,7 +361,7 @@ const AdminWebsite = () => {
               <h3 className="text-sm font-bold uppercase tracking-widest">Material categories</h3>
               <button
                 type="button"
-                onClick={() => patch('materials.categories', [...(draft.materials?.categories || []), { name: 'New category', image: '/website/bricks.jpg' }])}
+                onClick={() => patch('materials.categories', [...(draft.materials?.categories || []), { name: 'New category', image: '/website/material-cement.jpg' }])}
                 className="text-[11px] font-bold uppercase tracking-widest flex items-center gap-1 text-black"
               >
                 <FiPlus /> Add

@@ -30,18 +30,26 @@ export const footerLinks = [
 export const home = {
   eyebrow: 'We Are',
   title: ['Building', 'Something', 'Great!'],
+  descriptionBefore: 'We are working hard to bring you the best platform for all your ',
+  descriptionAccent: 'construction material',
+  descriptionAfter: ' needs.',
   description:
     'We are working hard to bring you the best platform for all your construction material needs.',
+  exploreCta: 'Explore Products',
+  watchCta: 'Watch Video',
+  quoteCta: 'Get a Quote',
+  trustTitle: 'Built on Trust',
+  trustItems: ['Premium Quality.', 'Honest Service.', 'Timely Delivery.'],
   comingSoon: 'Coming Soon',
   stayTuned: 'Stay Tuned!',
-  headline: 'Build Your Dream. We’ll Help You Build It.',
+  headline: 'The Materials You Need. From Dealers Near You.',
   intro:
-    'Find the construction materials you need from nearby dealers — simple, convenient and made for your project.',
-  primaryCta: 'Order Construction Materials on the App',
+    'Find building materials from nearby dealers — simple, convenient and made for your project. We sell materials. You build.',
+  primaryCta: 'Order Building Materials on the App',
   featureTitle: 'Everything You Need to Build, in One Place.',
   featureBody:
     'From foundation to finishing, discover construction materials for your home, commercial project or site — without the hassle of searching everywhere.',
-  closing: 'Less Hassle. More Building.',
+  closing: 'Less Hassle. More Materials.',
 };
 
 export const features = [
@@ -70,23 +78,28 @@ export const features = [
 export const benefits = [
   {
     title: 'Find Materials Easily',
-    text: 'Discover the construction materials you need in one place.',
+    text: 'Discover cement, bricks, steel, blocks and more in one place.',
+    image: '/website/material-cement.jpg',
   },
   {
     title: 'Nearby Options',
     text: 'Find material options around your project location.',
+    image: '/website/material-bricks.jpg',
   },
   {
     title: 'Save Time',
     text: 'Spend less time calling different dealers and searching local markets.',
+    image: '/website/material-steel.jpg',
   },
   {
     title: 'Simple Ordering',
     text: 'Place your material requirement conveniently through the app.',
+    image: '/website/material-blocks.jpg',
   },
   {
     title: 'Site Delivery',
-    text: 'Get your ordered material delivered to your construction site through the dealer.',
+    text: 'Get cement, steel and other ordered material delivered to your site through the dealer.',
+    image: '/website/material-cement.jpg',
   },
 ];
 
@@ -99,11 +112,36 @@ export const why = {
 };
 
 export const howSteps = [
-  { n: '01', title: 'Discover', text: 'Find the materials you need.' },
-  { n: '02', title: 'Choose', text: 'Explore available products and select what suits your requirement.' },
-  { n: '03', title: 'Order', text: 'Place your material requirement through the Build My Destiny app.' },
-  { n: '04', title: 'Receive', text: 'Your selected dealer coordinates delivery to your construction site.' },
-  { n: '05', title: 'Build', text: 'With material sourcing made easier, focus more on your actual construction work.' },
+  {
+    n: '01',
+    title: 'Discover',
+    text: 'Browse cement, bricks, steel, blocks and other building materials.',
+    image: '/website/material-cement.jpg',
+  },
+  {
+    n: '02',
+    title: 'Choose',
+    text: 'Compare products and pick the materials that suit your project.',
+    image: '/website/material-bricks.jpg',
+  },
+  {
+    n: '03',
+    title: 'Order',
+    text: 'Place your material requirement through the Build My Destiny app.',
+    image: '/website/material-steel.jpg',
+  },
+  {
+    n: '04',
+    title: 'Receive',
+    text: 'Your selected dealer coordinates delivery of the materials to your site.',
+    image: '/website/material-blocks.jpg',
+  },
+  {
+    n: '05',
+    title: 'Build',
+    text: 'Materials are sourced — now use them on your construction work.',
+    image: '/website/material-cement.jpg',
+  },
 ];
 
 export const howMantra = 'Search. Choose. Order. Build.';
@@ -113,15 +151,15 @@ export const materials = {
   intro: 'Build My Destiny is designed around everyday construction-material requirements.',
   note: 'Product categories and availability may vary by location.',
   categories: [
-    { name: 'Bricks', image: '/website/bricks.jpg' },
-    { name: 'AAC Blocks', image: '/website/blocks.jpg' },
-    { name: 'Paver Blocks', image: '/website/bricks.jpg' },
-    { name: 'Precast Products', image: '/website/blocks.jpg' },
-    { name: 'Cement', image: '/website/cement.jpg' },
-    { name: 'TMT & Steel', image: '/website/steel.jpg' },
-    { name: 'Sand', image: '/website/cement.jpg' },
-    { name: 'Aggregates', image: '/website/steel.jpg' },
-    { name: 'Other Construction Materials', image: '/website/hero-site.jpg' },
+    { name: 'Bricks', image: '/website/material-bricks.jpg' },
+    { name: 'AAC Blocks', image: '/website/material-blocks.jpg' },
+    { name: 'Paver Blocks', image: '/website/material-bricks.jpg' },
+    { name: 'Precast Products', image: '/website/material-blocks.jpg' },
+    { name: 'Cement', image: '/website/material-cement.jpg' },
+    { name: 'TMT & Steel', image: '/website/material-steel.jpg' },
+    { name: 'Sand', image: '/website/material-cement.jpg' },
+    { name: 'Aggregates', image: '/website/material-steel.jpg' },
+    { name: 'Other Construction Materials', image: '/website/material-blocks.jpg' },
   ],
 };
 
@@ -142,7 +180,7 @@ export const appSection = {
 
 export const about = {
   title: 'We’re Making Construction Easier.',
-  image: '/website/about.jpg',
+  image: '/website/material-cement.jpg',
   paragraphs: [
     'Construction is a big part of everyday life — from building a home to developing commercial spaces and infrastructure.',
     'But getting the right materials at the right time can often become complicated.',
@@ -242,14 +280,20 @@ export const isLegacyEcommercePath = (pathname) =>
   ECOMMERCE_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
 export const heroImages = {
-  background: '/website/hero-site.jpg',
-  collage: [
-    { src: '/website/steel.jpg', alt: 'Construction site' },
-    { src: '/website/about.jpg', alt: 'Site work' },
-    { src: '/website/dealers.jpg', alt: 'Project planning' },
-    { src: '/website/blocks.jpg', alt: 'Structure work' },
+  background: '/website/hero-banner-main.jpg',
+  slides: [
+    { src: '/website/hero-banner-main.jpg', alt: 'Cement, bricks and blocks at sunset' },
+    { src: '/website/hero-banner-cement.jpg', alt: 'Cement bags for construction' },
+    { src: '/website/hero-banner-bricks.jpg', alt: 'Bricks and concrete blocks' },
+    { src: '/website/hero-banner-steel.jpg', alt: 'TMT steel and cement' },
   ],
-  circle: '/website/hardhat.jpg',
+  collage: [
+    { src: '/website/material-cement.jpg', alt: 'Cement bags' },
+    { src: '/website/material-bricks.jpg', alt: 'Bricks' },
+    { src: '/website/material-steel.jpg', alt: 'TMT steel' },
+    { src: '/website/material-blocks.jpg', alt: 'AAC blocks' },
+  ],
+  circle: '/website/material-cement.jpg',
 };
 
 export const notify = {

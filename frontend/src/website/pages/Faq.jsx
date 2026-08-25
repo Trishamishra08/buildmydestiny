@@ -9,7 +9,7 @@ const Faq = () => {
   const [open, setOpen] = useState(0);
 
   return (
-    <div className="bg-[#0b0b0b]">
+    <div className="bg-[#f6f6f4]">
       <PageHero
         eyebrow="FAQ"
         title={faqPage?.title || 'Questions, answered.'}
@@ -20,16 +20,16 @@ const Faq = () => {
         {faqs.map((item, idx) => {
           const active = open === idx;
           return (
-            <article key={`${item.q}-${idx}`} className="border border-white/10 bg-black">
+            <article key={`${item.q}-${idx}`} className="border border-black/10 bg-white">
               <button
                 type="button"
                 onClick={() => setOpen(active ? -1 : idx)}
                 className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
               >
-                <span className="text-white font-semibold">{item.q}</span>
+                <span className="text-black font-semibold">{item.q}</span>
                 <FiChevronDown className={`text-[#FFB400] transition-transform ${active ? 'rotate-180' : ''}`} />
               </button>
-              {active && <p className="px-5 pb-5 text-white/70 text-sm leading-relaxed">{item.a}</p>}
+              {active && <p className="px-5 pb-5 text-black/70 text-sm leading-relaxed">{item.a}</p>}
             </article>
           );
         })}

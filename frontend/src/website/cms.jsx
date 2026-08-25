@@ -2,7 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import { buildDefaultContent } from './data/content';
 import api from '../utils/api';
 
-export const CMS_KEY = 'bmd_website_cms_v1';
+export const CMS_KEY = 'bmd_website_cms_v4';
 export const CMS_EVENT = 'bmd-cms-updated';
 
 const SETTING_KEYS = [

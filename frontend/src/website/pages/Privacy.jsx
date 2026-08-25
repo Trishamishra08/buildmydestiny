@@ -7,14 +7,14 @@ const Privacy = () => {
   const { brand, privacy, heroImages } = content;
 
   return (
-    <div className="bg-[#0b0b0b]">
+    <div className="bg-[#f6f6f4]">
       <PageHero
         eyebrow="Legal"
         title="Privacy Policy"
         subtitle={`How ${brand.name} handles the information you share with us.`}
         image={heroImages?.background}
       />
-      <section className="max-w-3xl mx-auto px-4 md:px-8 py-12 md:py-14 space-y-5 text-white/75 leading-relaxed text-sm md:text-base">
+      <section className="max-w-3xl mx-auto px-4 md:px-8 py-12 md:py-14 space-y-5 text-black/70 leading-relaxed text-sm md:text-base">
         <p>{privacy?.p1}</p>
         <p>{privacy?.p2}</p>
         <p>

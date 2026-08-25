@@ -26,7 +26,7 @@ const WebsiteLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="bmd-site relative min-h-screen flex flex-col bg-black">
+    <div className="bmd-site relative min-h-screen flex flex-col bg-[#f6f6f4]">
       <Header />
       <main className={`flex-1 ${isHome ? '' : 'pt-[72px] md:pt-[78px]'}`}>
         <Outlet />

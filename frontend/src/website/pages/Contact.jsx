@@ -37,14 +37,14 @@ const Contact = () => {
   };
 
   const fieldClass =
-    'w-full h-12 px-4 bg-[#111111] border border-white/15 text-white text-sm outline-none focus:border-[#FFB400]';
+    'w-full h-12 px-4 bg-white border border-black/15 text-black text-sm outline-none focus:border-[#FFB400]';
 
   return (
-    <div className="bg-[#0b0b0b]">
+    <div className="bg-[#f6f6f4]">
       <PageHero eyebrow="Contact Us" title={contact.title} subtitle={contact.intro} image={heroImages?.background} />
       <section className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-14 grid lg:grid-cols-[0.85fr_1.15fr] gap-10">
         <div>
-          <ScrollFillHeading as="h2" className="text-2xl mb-5">Contact Options</ScrollFillHeading>
+          <ScrollFillHeading as="h2" theme="light" className="text-2xl mb-5">Contact Options</ScrollFillHeading>
           <div className="flex flex-wrap gap-2 mb-8">
             {(contact.options || []).map((opt) => (
               <span key={opt} className="px-3 py-1.5 border border-[#FFB400] text-[#FFB400] text-xs font-bold uppercase tracking-wider">
@@ -52,7 +52,7 @@ const Contact = () => {
               </span>
             ))}
           </div>
-          <ul className="space-y-4 text-white/80">
+          <ul className="space-y-4 text-black/80">
             <li className="flex items-center gap-3"><FiPhone className="text-[#FFB400]" /> {brand.phone}</li>
             <li className="flex items-center gap-3"><FiMail className="text-[#FFB400]" /> {brand.email}</li>
             <li className="flex items-center gap-3"><FiMapPin className="text-[#FFB400]" /> {brand.location}</li>
@@ -76,7 +76,7 @@ const Contact = () => {
             onChange={onChange}
             placeholder="Message"
             rows={5}
-            className="w-full px-4 py-3 bg-[#111111] border border-white/15 text-white text-sm outline-none focus:border-[#FFB400]"
+            className="w-full px-4 py-3 bg-white border border-black/15 text-black text-sm outline-none focus:border-[#FFB400]"
           />
           <button type="submit" className="h-11 px-8 bg-[#FFB400] text-black text-[12px] font-extrabold uppercase tracking-[0.16em]">
             Submit
