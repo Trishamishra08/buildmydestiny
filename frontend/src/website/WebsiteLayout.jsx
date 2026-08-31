@@ -7,7 +7,6 @@ import './styles.css';
 
 const WebsiteLayout = () => {
   const location = useLocation();
-  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -26,9 +25,9 @@ const WebsiteLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="bmd-site relative min-h-screen flex flex-col bg-[#f6f6f4]">
+    <div className="bmd-site relative min-h-screen flex flex-col bg-white">
       <Header />
-      <main className={`flex-1 ${isHome ? '' : 'pt-[72px] md:pt-[78px]'}`}>
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />

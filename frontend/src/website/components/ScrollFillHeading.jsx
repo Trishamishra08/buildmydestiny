@@ -25,7 +25,13 @@ const flattenKey = (node) => {
 };
 
 const splitString = (text, inAccent, theme, keyPrefix, variant) => {
-  const lit = inAccent ? ACCENT : variant === 'hero' ? '#FFFFFF' : LIT[theme] || LIT.dark;
+  const lit = inAccent
+    ? ACCENT
+    : variant === 'hero'
+      ? theme === 'light'
+        ? LIT.light
+        : '#FFFFFF'
+      : LIT[theme] || LIT.dark;
   return text.split(/(\s+)/).map((part, index) => {
     if (!part) return null;
     if (/^\s+$/.test(part)) {
@@ -99,15 +105,16 @@ const ScrollFillHeading = ({
     }
 
     const { gsap, ScrollTrigger } = getGsap();
-    const trigger = triggerRef?.current || (isHero ? root.closest('section') : root) || root;
+    const sectionEl = root.closest('section');
+    const trigger = triggerRef?.current || (isHero ? sectionEl : root) || root;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
           trigger,
-          start: isHero ? 'top top' : 'top 85%',
-          end: isHero ? '+=70%' : 'top 30%',
+          start: isHero ? 'top top' : 'top 88%',
+          end: isHero ? '+=70%' : 'top 35%',
           scrub: 0.85,
           invalidateOnRefresh: true,
         },

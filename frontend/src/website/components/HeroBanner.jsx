@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 
-const HeroBanner = ({ slides = [] }) => {
+const HeroBanner = ({ slides = [], minimal = false }) => {
   const items = slides.filter((slide) => slide?.src);
   if (!items.length) return null;
 
@@ -17,7 +17,7 @@ const HeroBanner = ({ slides = [] }) => {
       loop={items.length > 1}
       speed={900}
       autoplay={{ delay: 3200, disableOnInteraction: false, pauseOnMouseEnter: true }}
-      pagination={{ clickable: true }}
+      pagination={minimal ? false : { clickable: true }}
       observer
       observeParents
       className="bmd-hero-swiper"
@@ -25,7 +25,7 @@ const HeroBanner = ({ slides = [] }) => {
       {items.map((slide) => (
         <SwiperSlide key={slide.src + (slide.label || '')}>
           <img src={slide.src} alt={slide.alt || slide.label || 'Building material'} />
-          {slide.label ? (
+          {!minimal && slide.label ? (
             <span className="bmd-hero-label">
               {slide.label}
             </span>
