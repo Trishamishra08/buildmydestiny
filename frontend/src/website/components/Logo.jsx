@@ -22,15 +22,20 @@ const Logo = ({ compact = false, to = '/', theme = 'dark', tagline, name }) => {
       </svg>
       <div className="min-w-0 leading-none">
         <div
-          className={`text-[17px] md:text-[20px] font-extrabold tracking-[0.04em] ${nameColor}`}
-          style={{ fontFamily: "'Oswald', sans-serif" }}
+          className={`text-[15px] md:text-[16px] font-bold tracking-[0.04em] uppercase ${nameColor}`}
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
           {words.join(' ')}{words.length ? ' ' : ''}
           <span className="text-[#FFB400]">{last}</span>
         </div>
         {!compact && (
-          <div className={`mt-1 text-[8px] md:text-[9px] font-semibold uppercase tracking-[0.2em] ${tagColor}`}>
+          <div className={`mt-1 text-[8px] md:text-[9px] font-medium tracking-wide ${tagColor}`}>
             {tagline || fallbackBrand.tagline}
+          </div>
+        )}
+        {compact && (
+          <div className="mt-0.5 text-[9px] font-medium text-white/70 tracking-wide">
+            {tagline || 'Construction Made Easy'}
           </div>
         )}
       </div>

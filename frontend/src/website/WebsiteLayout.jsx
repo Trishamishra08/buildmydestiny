@@ -25,9 +25,9 @@ const WebsiteLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="bmd-site relative min-h-screen flex flex-col bg-white">
+    <div className="bmd-site relative min-h-screen flex flex-col bg-[#0a0a0a] overflow-x-clip">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 min-w-0 overflow-x-clip">
         <Outlet />
       </main>
       <Footer />

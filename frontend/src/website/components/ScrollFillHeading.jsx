@@ -114,8 +114,8 @@ const ScrollFillHeading = ({
         scrollTrigger: {
           trigger,
           start: isHero ? 'top top' : 'top 88%',
-          end: isHero ? '+=70%' : 'top 35%',
-          scrub: 0.85,
+          end: isHero ? '+=28%' : 'top 48%',
+          scrub: isHero ? 0.25 : 0.4,
           invalidateOnRefresh: true,
         },
       });
@@ -138,7 +138,7 @@ const ScrollFillHeading = ({
               webkitClipPath: 'inset(0 100% 0 0)',
               duration: 1,
             },
-            index * 0.32
+            index * 0.1
           );
           return;
         }
@@ -156,7 +156,7 @@ const ScrollFillHeading = ({
             webkitClipPath: 'inset(0 0% 0 0)',
             duration: 1,
           },
-          index * 0.32
+          index * 0.12
         );
       });
     }, root);

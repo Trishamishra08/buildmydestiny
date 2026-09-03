@@ -7,14 +7,15 @@ const PlayStorePhoneMockup = ({
   tagline = 'Building Materials, Building Trust.',
   screenshots = [],
   comingSoon = 'Coming Soon',
+  className = '',
 }) => {
   const shots =
     screenshots.length > 0
       ? screenshots
-      : ['/website/material-cement.jpg', '/website/material-bricks.jpg', '/website/material-steel.jpg'];
+      : ['/website/cutout-cement.png', '/website/cutout-bricks.png', '/website/cutout-steel.png'];
 
   return (
-    <div className="relative mx-auto w-[11.5rem] sm:w-[12.5rem] md:w-[13.5rem]">
+    <div className={`relative mx-auto w-[11.25rem] sm:w-[11.75rem] md:w-[12.25rem] ${className}`.trim()}>
       <div className="bmd-phone-frame rounded-[1.85rem] bg-[#1a1a1a] p-[7px] shadow-[0_20px_50px_rgba(0,0,0,0.35)] ring-1 ring-black/20">
         <div className="rounded-[1.45rem] overflow-hidden bg-white aspect-[9/19.5] flex flex-col">
           {/* Status bar */}
@@ -101,9 +102,9 @@ const PlayStorePhoneMockup = ({
                 {shots.slice(0, 4).map((src, i) => (
                   <div
                     key={`${src}-${i}`}
-                    className="shrink-0 w-[4.5rem] h-[8rem] rounded-md overflow-hidden border border-black/8 bg-neutral-100"
+                    className="shrink-0 w-[4.5rem] h-[7.25rem] rounded-md overflow-hidden border border-black/8 bg-white"
                   >
-                    <img src={src} alt="" className="w-full h-full object-cover" />
+                    <img src={src} alt="" className="w-full h-full object-contain object-bottom" />
                   </div>
                 ))}
               </div>

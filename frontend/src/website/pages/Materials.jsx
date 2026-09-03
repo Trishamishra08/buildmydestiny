@@ -79,9 +79,10 @@ const Materials = () => {
             className="text-lg md:text-2xl font-extrabold uppercase text-black mb-4"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            For Every Construction Project
+            For Every Kind of Builder
           </ScrollFillHeading>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-2.5 md:gap-3">
+          <p className="text-black/55 text-sm mb-4">One Platform. Different Construction Needs.</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3">
             {projects.map((item, idx) => (
               <ScrollReveal key={item.title} stagger={idx * 0.06} y={14} scale={0.97}>
                 <div className="bg-white border border-black/8 rounded-md p-3.5 h-full hover:border-[#FFB400] transition-colors">
@@ -93,9 +94,12 @@ const Materials = () => {
             ))}
           </div>
           <div className="mt-5 flex flex-wrap items-center gap-4">
-            <div className="h-10 px-5 inline-flex items-center bg-[#FFB400] text-black text-[10px] font-extrabold uppercase tracking-[0.14em] cursor-default select-none">
-              Order on the App
-            </div>
+            <Link
+              to="/#app"
+              className="h-10 px-5 inline-flex items-center bg-[#FFB400] text-black text-[10px] font-extrabold uppercase tracking-[0.14em]"
+            >
+              Explore All Materials on the App
+            </Link>
             <Link
               to="/faq"
               className="text-black text-[10px] font-bold uppercase tracking-[0.12em] hover:text-[#FFB400] transition-colors"

@@ -1,7 +1,9 @@
 export const brand = {
   name: 'BUILD MY DESTINY',
-  tagline: 'Building Materials, Building Trust.',
-  slogan: 'Construction Made Easy.',
+  tagline: 'Building Materials. Made Simple.',
+  slogan: 'Construction Made Easy',
+  footerBlurb:
+    'A simpler way to source essential construction materials for your home, project or business.',
   phone: '+91 12345 67890',
   email: 'info@buildmydestiny.com',
   web: 'www.buildmydestiny.com',
@@ -10,68 +12,110 @@ export const brand = {
 
 export const navLinks = [
   { label: 'Home', to: '/' },
+  { label: 'All Materials', to: '/products' },
+  { label: 'Why Build My Destiny?', to: '/#why' },
+  { label: 'Become a Dealer', to: '/#dealers' },
+  { label: 'How It Works', to: '/#how-it-works' },
+  { label: 'App', to: '/#app' },
   { label: 'About Us', to: '/about' },
-  { label: 'Products', to: '/products' },
-  { label: 'Dealers', to: '/dealers' },
-  { label: 'Contact Us', to: '/contact' },
+  { label: 'FAQ', to: '/faq' },
 ];
 
-export const footerLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'About Us', to: '/about' },
-  { label: 'How It Works', to: '/how-it-works' },
-  { label: 'Materials', to: '/products' },
-  { label: 'Dealer', to: '/dealers' },
-  { label: 'Contact Us', to: '/contact' },
-  { label: 'FAQ', to: '/faq' },
-  { label: 'Privacy Policy', to: '/privacy' },
+export const footerColumns = [
+  {
+    title: 'Quick Links',
+    links: [
+      { label: 'Home', to: '/' },
+      { label: 'All Materials', to: '/products' },
+      { label: 'Why Build My Destiny?', to: '/#why' },
+      { label: 'Become a Dealer', to: '/dealers' },
+      { label: 'How It Works', to: '/#how-it-works' },
+      { label: 'App', to: '/#app' },
+      { label: 'About Us', to: '/about' },
+      { label: 'FAQ', to: '/faq' },
+    ],
+  },
+  {
+    title: 'For You',
+    links: [
+      { label: 'For Homeowners', to: '/#audience' },
+      { label: 'For Contractors & Builders', to: '/#audience' },
+      { label: 'About Us', to: '/about' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Contact Us', to: '/contact' },
+    ],
+  },
+  {
+    title: 'Materials',
+    links: [
+      { label: 'Cement', to: '/products' },
+      { label: 'TMT Steel', to: '/products' },
+      { label: 'Bricks', to: '/products' },
+      { label: 'Aggregates', to: '/products' },
+      { label: 'Ready-Mix Concrete', to: '/products' },
+      { label: 'Other Materials', to: '/products' },
+    ],
+  },
+  {
+    title: 'Support',
+    links: [
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Contact Support', to: '/contact' },
+      { label: 'Privacy Policy', to: '/privacy' },
+      { label: 'Terms & Conditions', to: '/privacy' },
+    ],
+  },
 ];
+
+/** @deprecated use footerColumns */
+export const footerLinks = footerColumns.flatMap((col) => col.links);
 
 export const home = {
-  eyebrow: 'We Are',
-  title: ['Building', 'Something', 'Great!'],
-  descriptionBefore: 'We are working hard to bring you the best platform for all your ',
-  descriptionAccent: 'construction material',
-  descriptionAfter: ' needs.',
+  eyebrow: 'Build My Destiny',
+  title: ['Build Your Dream.', "We'll Help You", 'Build It Right.'],
+  lead: 'Everything you need to source building materials, made simpler.',
   description:
-    'We are working hard to bring you the best platform for all your construction material needs.',
-  exploreCta: 'Explore Products',
-  watchCta: 'Watch Video',
+    'From cement and TMT steel to bricks, aggregates and other construction essentials, Build My Destiny helps you discover material options, compare what fits your project and place your requirement through one simple platform.',
+  closing:
+    'Every structure begins with a vision. We help make the material journey simpler so you can build with confidence.',
   quoteCta: 'Get a Quote',
-  trustTitle: 'Built on Trust',
-  trustItems: ['Premium Quality.', 'Honest Service.', 'Timely Delivery.'],
+  exploreCta: 'Explore Materials',
   comingSoon: 'Coming Soon',
   stayTuned: 'Stay Tuned!',
-  headline: 'The Materials You Need. From Dealers Near You.',
+  headline: 'Build Your Dream. We’ll Help You Build It Right.',
   intro:
-    'Find building materials from nearby dealers — simple, convenient and made for your project. We sell materials. You build.',
-  primaryCta: 'Order Building Materials on the App',
-  featureTitle: 'Everything You Need to Build, in One Place.',
-  featureBody:
-    'From foundation to finishing, discover construction materials for your home, commercial project or site — without the hassle of searching everywhere.',
-  closing: 'Less Hassle. More Materials.',
+    'Everything you need to source building materials, made simpler.',
+  primaryCta: 'Get a Quote',
+  materialsCta: 'Explore All Materials on the App',
+  whyCta: 'Learn More',
+  howCta: 'Start Your Requirement',
+  dealerCta: 'Join as a Dealer',
+  audienceTitle: 'One Platform. Different Construction Needs.',
+  audienceEyebrow: 'For Every Kind of Builder',
+  promiseEyebrow: 'Our Promise to You',
+  promiseTitle: 'Built Around a Better Construction Experience.',
 };
 
 export const features = [
   {
-    title: 'Wide Range',
-    text: 'All types of construction materials under one roof.',
+    title: 'Wide Range of Materials',
+    text: 'Explore materials for every stage of your project.',
     icon: 'boxes',
   },
   {
-    title: 'Premium Quality',
-    text: 'Trusted brands and tested products.',
-    icon: 'badge',
+    title: 'Simple Ordering',
+    text: 'Search, choose and place your requirement with ease.',
+    icon: 'cart',
   },
   {
-    title: 'Reliable Delivery',
-    text: 'On-time delivery at your doorstep.',
+    title: 'Save Time',
+    text: 'Spend less time searching and contacting multiple suppliers.',
+    icon: 'clock',
+  },
+  {
+    title: 'Delivery to Your Site',
+    text: 'Your selected dealer coordinates delivery to your construction site.',
     icon: 'truck',
-  },
-  {
-    title: 'Dedicated Support',
-    text: 'We are here to help you always.',
-    icon: 'support',
   },
 ];
 
@@ -79,113 +123,199 @@ export const benefits = [
   {
     title: 'Find Materials Easily',
     text: 'Discover cement, bricks, steel, blocks and more in one place.',
-    image: '/website/material-cement.jpg',
+    image: '/website/cutout-cement.png',
   },
   {
     title: 'Nearby Options',
     text: 'Find material options around your project location.',
-    image: '/website/material-bricks.jpg',
+    image: '/website/cutout-bricks.png',
   },
   {
     title: 'Save Time',
-    text: 'Spend less time calling different dealers and searching local markets.',
-    image: '/website/material-steel.jpg',
+    text: 'Spend less time searching and contacting multiple suppliers.',
+    image: '/website/cutout-steel.png',
   },
   {
     title: 'Simple Ordering',
-    text: 'Place your material requirement conveniently through the app.',
-    image: '/website/material-blocks.jpg',
+    text: 'Search, choose and place your requirement with ease.',
+    image: '/website/cutout-blocks.png',
   },
   {
     title: 'Site Delivery',
-    text: 'Get cement, steel and other ordered material delivered to your site through the dealer.',
-    image: '/website/material-cement.jpg',
+    text: 'Your selected dealer coordinates delivery to your construction site.',
+    image: '/website/cutout-aggregates.png',
   },
 ];
 
 export const why = {
-  title: 'Construction Should Be Easier.',
-  p1: 'Finding materials, checking availability, talking to dealers and arranging delivery can take valuable time during construction.',
-  p2: 'Build My Destiny is created to make this experience simpler and more convenient.',
+  title: 'Everything You Need to Build.\nOne Simpler Way.',
+  eyebrow: 'Why Build My Destiny?',
+  p1: 'Finding the right construction materials can take time and effort.',
+  p2: 'Build My Destiny is designed to make the process simpler by bringing material discovery, ordering and dealer connections together in one convenient platform.',
   focus:
-    'Our focus is simple: Make construction-material buying easier for the people who are actually building.',
+    'Your project, requirement and convenience remain at the centre of the experience we are building.',
+  cta: 'Learn More',
+  features: [
+    {
+      title: 'All in One Place',
+      text: 'Discover a wide range of construction materials for different project requirements.',
+    },
+    {
+      title: 'Save Valuable Time',
+      text: 'Reduce the need to contact multiple suppliers and search in different places.',
+    },
+    {
+      title: 'Easy & Convenient Ordering',
+      text: 'Find the materials you need and place your requirement through a simple digital experience.',
+    },
+    {
+      title: 'Built for Your Construction Journey',
+      text: 'Whether you are building a home or managing a larger project, we make material sourcing easier.',
+    },
+    {
+      title: 'Convenient Sourcing',
+      text: 'Bring material requirements into one organised journey.',
+    },
+    {
+      title: 'Customer First',
+      text: 'Your project, requirement and convenience remain at the centre of the experience we are building.',
+    },
+  ],
 };
 
 export const howSteps = [
   {
     n: '01',
-    title: 'Discover',
-    text: 'Browse cement, bricks, steel, blocks and other building materials.',
-    image: '/website/material-cement.jpg',
+    title: 'Discover What You Need',
+    text: 'Explore materials and identify the products and quantities required for your project.',
   },
   {
     n: '02',
-    title: 'Choose',
-    text: 'Compare products and pick the materials that suit your project.',
-    image: '/website/material-bricks.jpg',
+    title: 'Share Your Requirement',
+    text: 'Select or submit your material requirement through the available Build My Destiny process.',
   },
   {
     n: '03',
-    title: 'Order',
-    text: 'Place your material requirement through the Build My Destiny app.',
-    image: '/website/material-steel.jpg',
+    title: 'Review Your Options',
+    text: 'Review relevant material, pricing and supply information available for your requirement.',
   },
   {
     n: '04',
-    title: 'Receive',
-    text: 'Your selected dealer coordinates delivery of the materials to your site.',
-    image: '/website/material-blocks.jpg',
+    title: 'Confirm Your Order',
+    text: 'The participating dealer reviews the requirement and confirms fulfilment based on availability and delivery feasibility.',
   },
   {
     n: '05',
-    title: 'Build',
-    text: 'Materials are sourced — now use them on your construction work.',
-    image: '/website/material-cement.jpg',
+    title: 'Get It Delivered',
+    text: 'Once confirmed, the dealer manages fulfilment and coordinates delivery according to the agreed requirement.',
+  },
+  {
+    n: '06',
+    title: 'Keep Building',
+    text: 'Spend less time managing material sourcing and more time focusing on your construction project.',
   },
 ];
 
-export const howMantra = 'Search. Choose. Order. Build.';
+export const howMantra = 'Simple From Requirement to Delivery.';
 
 export const materials = {
-  title: 'Everything You Need to Build.',
-  intro: 'Build My Destiny is designed around everyday construction-material requirements.',
-  note: 'Product categories and availability may vary by location.',
+  title: 'Everything You Need for Your Construction Project.',
+  intro:
+    'From the foundation to the finishing stage, discover a growing range of construction materials in one convenient place.',
+  note: 'Material availability, brands and product options may vary by location and participating dealer.',
+  cta: 'Explore All Materials on the App',
   categories: [
-    { name: 'Bricks', image: '/website/material-bricks.jpg' },
-    { name: 'AAC Blocks', image: '/website/material-blocks.jpg' },
-    { name: 'Paver Blocks', image: '/website/material-bricks.jpg' },
-    { name: 'Precast Products', image: '/website/material-blocks.jpg' },
-    { name: 'Cement', image: '/website/material-cement.jpg' },
-    { name: 'TMT & Steel', image: '/website/material-steel.jpg' },
-    { name: 'Sand', image: '/website/material-cement.jpg' },
-    { name: 'Aggregates', image: '/website/material-steel.jpg' },
-    { name: 'Other Construction Materials', image: '/website/material-blocks.jpg' },
+    {
+      name: 'Bricks',
+      text: 'Reliable masonry materials for construction needs.',
+      image: '/website/cutout-bricks.png',
+    },
+    {
+      name: 'AAC Blocks',
+      text: 'Modern wall-building materials for efficient construction.',
+      image: '/website/cutout-blocks.png',
+    },
+    {
+      name: 'Paver Blocks',
+      text: 'Practical solutions for pathways and outdoor surfaces.',
+      image: '/website/cutout-pavers.png',
+    },
+    {
+      name: 'Precast Products',
+      text: 'Ready-to-use construction products for multiple applications.',
+      image: '/website/cutout-precast.png',
+    },
+    {
+      name: 'Cement',
+      text: 'For foundations, structures and dependable construction.',
+      image: '/website/cutout-cement.png',
+    },
+    {
+      name: 'TMT Steel',
+      text: 'Essential reinforcement material for structural strength.',
+      image: '/website/cutout-steel.png',
+    },
+    {
+      name: 'Sand',
+      text: 'An essential material for multiple construction applications.',
+      image: '/website/cutout-sand.png',
+    },
+    {
+      name: 'Aggregates',
+      text: 'Important materials for concrete and structural work.',
+      image: '/website/cutout-aggregates.png',
+    },
+    {
+      name: 'More Construction Materials',
+      text: 'Explore additional categories or share your requirement.',
+      image: '/website/cutout-blocks.png',
+    },
   ],
 };
 
 export const projects = [
-  { title: 'Home Construction', text: 'Find materials for your home-building journey.' },
-  { title: 'Renovation', text: 'Make material sourcing easier for renovation and improvement work.' },
-  { title: 'Contractors', text: 'Simplify material discovery and ordering for ongoing projects.' },
-  { title: 'Builders', text: 'Find material options for residential and commercial construction.' },
-  { title: 'Project Owners', text: 'Manage construction-material requirements more conveniently.' },
+  {
+    title: 'For Homeowners',
+    text: 'Build your home with a simpler material-sourcing journey.',
+  },
+  {
+    title: 'For Contractors',
+    text: 'Make regular material procurement easier to organise and manage.',
+  },
+  {
+    title: 'For Builders & Developers',
+    text: 'Support project requirements with a more connected material-sourcing experience.',
+  },
+  {
+    title: 'For Construction Professionals',
+    text: 'A straightforward way to connect material requirements with available supply options.',
+  },
 ];
 
 export const appSection = {
-  title: 'Your Construction Journey, on the Build My Destiny App',
-  body: 'The website introduces Build My Destiny. The actual product discovery, ordering and account experience will happen through the Build My Destiny app.',
-  steps: 'Search materials. Choose your requirement. Place your order. Get it delivered to your site.',
-  qr: 'Scan. Download. Start Building.',
+  heading: 'Build My Destiny App',
+  title: 'Your Construction Journey, Made Simple.',
+  body: 'Search materials, explore options, place your requirement and stay connected with order updates through the app.',
+  steps: 'Search → Choose → Order → Dealer Delivers',
+  qr: 'Scan to Download the App',
+  highlights: [
+    'Explore a range of materials',
+    'Share your requirement',
+    'Get quotes and compare options',
+    'Track your order',
+    'Stay connected with your dealer',
+  ],
 };
 
 export const about = {
   title: 'We’re Making Construction Easier.',
-  image: '/website/material-cement.jpg',
+  image: '/website/cutout-cement.png',
   paragraphs: [
     'Construction is a big part of everyday life — from building a home to developing commercial spaces and infrastructure.',
     'But getting the right materials at the right time can often become complicated.',
     'Build My Destiny is being built to simplify that experience.',
     'We are creating a digital connection between customers and construction-material dealers so that finding and ordering materials becomes more convenient, organized and accessible.',
+    'Dealers handle fulfilment and delivery after confirming the requirement — so you get a marketplace experience focused on material options and participating dealers.',
   ],
   vision: 'Make construction-material buying easier for everyone.',
   mission:
@@ -193,61 +323,90 @@ export const about = {
 };
 
 export const promises = [
-  { title: 'Convenience', text: 'A simpler way to discover and order materials.' },
-  { title: 'Local Connection', text: 'Connect with material suppliers around your project.' },
-  { title: 'Transparency', text: 'Clear product and order information wherever available.' },
-  { title: 'Convenient Delivery', text: 'Material delivery is coordinated through the selected dealer.' },
-  { title: 'Customer First', text: 'The platform is designed around making your construction experience easier.' },
+  {
+    title: 'Convenience',
+    text: 'A simpler way to discover and order construction materials.',
+  },
+  {
+    title: 'Trusted Dealer Network',
+    text: 'Connect with a growing network of participating dealers.',
+  },
+  {
+    title: 'Clear & Organised Information',
+    text: 'Access product and requirement information in a more convenient and structured way.',
+  },
+  {
+    title: 'Delivery to Your Site',
+    text: 'The selected dealer coordinates delivery based on the confirmed order.',
+  },
+  {
+    title: 'Customer-First Approach',
+    text: 'We are continuously working to make your material journey easier and better.',
+  },
 ];
 
 export const dealers = {
-  title: 'Grow Your Business with Build My Destiny',
-  intro: 'Take your construction-material business online and connect with more customers in your area.',
-  image: '/website/dealers.jpg',
-  cta: 'Become a Build My Destiny Dealer',
+  title: 'Grow Your Construction-Material Business with Build My Destiny.',
+  intro:
+    'Join a growing platform designed to help construction-material businesses reach more customers and explore new opportunities.',
+  image: '/website/dealer-worker.jpg',
+  cta: 'Join as a Dealer',
   benefits: [
-    { title: 'Reach More Customers', text: 'Showcase your business to customers looking for construction materials.' },
-    { title: 'Digital Presence', text: 'Give your traditional business a professional online presence.' },
-    { title: 'More Business Opportunities', text: 'Receive customer enquiries and orders through the platform.' },
-    { title: 'Showcase Your Products', text: 'Display the materials and products you offer.' },
-    { title: 'Connect With Local Demand', text: 'Reach customers around your service area.' },
-    { title: 'Manage Orders Digitally', text: 'Keep orders and business activity more organized.' },
-    { title: 'Your Delivery, Your Operations', text: 'Continue using your existing delivery setup.' },
-    { title: 'Grow With the Network', text: 'Become part of a growing digital construction-material ecosystem.' },
+    {
+      title: 'Reach More Customers',
+      text: 'Showcase your material business to a wider customer base.',
+    },
+    {
+      title: 'Grow Your Business Digitally',
+      text: 'Build a stronger digital presence through a modern platform.',
+    },
+    {
+      title: 'Showcase Your Products',
+      text: 'Present your construction materials and offerings to potential customers.',
+    },
+    {
+      title: 'Keep Control of Your Operations',
+      text: 'Continue managing your own stock, fulfilment and delivery operations.',
+    },
+    {
+      title: 'Be Part of a Growing Network',
+      text: 'Join a platform built to create more opportunities for construction-material businesses.',
+    },
   ],
 };
 
 export const contact = {
   title: 'Need Help?',
-  intro: 'Have a question about Build My Destiny, your order or becoming a dealer? We’re here to help.',
+  intro:
+    'Have a question about Build My Destiny, your requirement or becoming a dealer? We’re here to help.',
   options: ['Customer Support', 'Dealer Support', 'Business Enquiry'],
 };
 
 export const faqs = [
   {
     q: 'What is Build My Destiny?',
-    a: 'A digital platform designed to make construction-material buying easier by connecting customers with local material dealers.',
+    a: 'A digital marketplace platform designed to make construction-material buying easier by connecting customers with participating material dealers.',
   },
   {
     q: 'Where can I place an order?',
-    a: 'Product discovery and ordering will be available through the Build My Destiny app.',
+    a: 'Product discovery, requirements and ordering are available through the Build My Destiny app.',
   },
   {
     q: 'What materials are available?',
-    a: 'Bricks, AAC blocks, pavers, precast products, cement, TMT, sand, aggregates and other construction products, depending on location and availability.',
+    a: 'Bricks, AAC blocks, paver blocks, precast products, cement, TMT steel, sand, aggregates and other construction materials — depending on location and participating dealers.',
   },
   {
     q: 'How is delivery handled?',
-    a: 'The selected dealer coordinates delivery of the ordered material to the customer’s construction site.',
+    a: 'Participating dealers handle fulfilment and coordinate delivery after confirming the requirement. Build My Destiny does not personally perform all deliveries.',
   },
   {
     q: 'Can dealers join?',
-    a: 'Yes. Construction-material dealers can register through the Dealer section.',
+    a: 'Yes. Construction-material dealers can register through the Become a Dealer section.',
   },
 ];
 
-export const APP_HREF = '/app';
-export const DEALER_HREF = '/vendor/register';
+export const APP_HREF = '/#app';
+export const DEALER_HREF = '/dealers';
 
 export const ECOMMERCE_PATHS = [
   '/shop',
@@ -288,12 +447,12 @@ export const heroImages = {
     { src: '/website/hero-banner-steel.jpg', alt: 'TMT steel and cement' },
   ],
   collage: [
-    { src: '/website/material-cement.jpg', alt: 'Cement bags' },
-    { src: '/website/material-bricks.jpg', alt: 'Bricks' },
-    { src: '/website/material-steel.jpg', alt: 'TMT steel' },
-    { src: '/website/material-blocks.jpg', alt: 'AAC blocks' },
+    { src: '/website/cutout-cement.png', alt: 'Cement' },
+    { src: '/website/cutout-bricks.png', alt: 'Bricks' },
+    { src: '/website/cutout-steel.png', alt: 'TMT steel' },
+    { src: '/website/cutout-blocks.png', alt: 'AAC blocks' },
   ],
-  circle: '/website/material-cement.jpg',
+  circle: '/website/cutout-cement.png',
 };
 
 export const notify = {
@@ -311,7 +470,7 @@ export const faqPage = {
 
 export const privacy = {
   p1: 'Build My Destiny collects only the information you choose to share — such as your name, mobile number, email and enquiry details — so we can respond to support requests, dealer applications and launch notifications.',
-  p2: 'Notify-me emails and contact form submissions are stored so our team can follow up. We do not sell this information. Product discovery, ordering and account data live in the Build My Destiny app experience.',
+  p2: 'Contact form submissions are stored so our team can follow up. We do not sell this information. Product discovery, ordering and account data live in the Build My Destiny app experience. Participating dealers manage fulfilment and delivery for confirmed requirements.',
 };
 
 export const buildDefaultContent = () =>
@@ -336,5 +495,6 @@ export const buildDefaultContent = () =>
       notify,
       faqPage,
       privacy,
+      footerColumns,
     })
   );
