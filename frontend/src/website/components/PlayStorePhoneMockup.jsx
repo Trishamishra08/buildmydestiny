@@ -15,7 +15,7 @@ const PlayStorePhoneMockup = ({
       : ['/website/cutout-cement.png', '/website/cutout-bricks.png', '/website/cutout-steel.png'];
 
   return (
-    <div className={`relative mx-auto w-[11.25rem] sm:w-[11.75rem] md:w-[12.25rem] ${className}`.trim()}>
+    <div className={`relative mx-auto bmd-phone-shell w-[11.25rem] sm:w-[11.75rem] md:w-[12.25rem] ${className}`.trim()}>
       <div className="bmd-phone-frame rounded-[1.85rem] bg-[#1a1a1a] p-[7px] shadow-[0_20px_50px_rgba(0,0,0,0.35)] ring-1 ring-black/20">
         <div className="rounded-[1.45rem] overflow-hidden bg-white aspect-[9/19.5] flex flex-col">
           {/* Status bar */}

@@ -1,20 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-import { getCategoryHref } from '../lib/categories';
+import { getCategoryHref, slugifyCategory } from '../lib/categories';
 
 const CategoryCard = ({ name, image, stagger = 0, compact = false, variant = 'explore' }) => {
   const isCatalog = variant === 'catalog';
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const slug = slugifyCategory(name);
+  const activeCategory = searchParams.get('category');
+  const onSameCategory =
+    location.pathname.startsWith('/products') && activeCategory === slug;
+
+  // Same filtered page pe Explore no-op lagta hai — contact pe le jao
+  const href = onSameCategory
+    ? `/contact?material=${encodeURIComponent(name)}`
+    : getCategoryHref(name);
 
   return (
-    <ScrollReveal stagger={stagger} y={16} scale={0.96}>
+    <ScrollReveal stagger={stagger} y={16} scale={0.96} className="relative z-[1]">
       <Link
-        to={getCategoryHref(name)}
+        to={href}
         className={
           isCatalog
-            ? 'group bmd-material-tile flex flex-col items-center text-center h-full'
-            : 'group block bg-white border border-black/10 rounded-md overflow-hidden hover:border-[#FFB400] hover:shadow-md transition-colors duration-300 h-full'
+            ? 'group bmd-material-tile flex flex-col items-center text-center h-full cursor-pointer'
+            : 'group relative z-[1] block bg-white border border-black/10 rounded-md overflow-hidden hover:border-[#FFB400] hover:shadow-md transition-colors duration-300 h-full cursor-pointer'
         }
       >
         <div
@@ -31,8 +42,8 @@ const CategoryCard = ({ name, image, stagger = 0, compact = false, variant = 'ex
             alt={name}
             className={
               isCatalog
-                ? 'bmd-material-cutout h-[6.25rem] md:h-[7.25rem] w-[94%] object-contain object-bottom group-hover:scale-105 transition-transform duration-500'
-                : 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500'
+                ? 'bmd-material-cutout h-[6.25rem] md:h-[7.25rem] w-[94%] object-contain object-bottom group-hover:scale-105 transition-transform duration-500 pointer-events-none'
+                : 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none'
             }
           />
         </div>
@@ -49,7 +60,7 @@ const CategoryCard = ({ name, image, stagger = 0, compact = false, variant = 'ex
           {isCatalog ? (
             <span className="mt-1.5 mx-auto block w-6 h-[2px] bg-[#FFB400]" />
           ) : (
-            <span className="inline-flex items-center gap-0.5 mt-0.5 text-[#FFB400] text-[9px] md:text-[10px] font-bold uppercase tracking-wide group-hover:gap-1 transition-all">
+            <span className="inline-flex items-center gap-0.5 mt-0.5 text-[#FFB400] text-[9px] md:text-[10px] font-bold uppercase tracking-wide group-hover:gap-1 transition-all pointer-events-none">
               Explore <ArrowRight size={10} />
             </span>
           )}

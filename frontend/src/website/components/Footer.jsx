@@ -3,22 +3,29 @@ import { Link } from 'react-router-dom';
 import {
   FiPhone,
   FiMail,
-  FiFacebook,
-  FiInstagram,
-  FiLinkedin,
-  FiYoutube,
 } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { ArrowRight } from 'lucide-react';
 import Logo from './Logo';
 import QrScanCard from './QrScanCard';
-import { footerColumns as defaultFooterColumns } from '../data/content';
+import { footerColumns as defaultFooterColumns, brand as fallbackBrand } from '../data/content';
 import { useWebsiteContent } from '../cms';
+import { getWhatsAppChatHref, openWhatsAppChat, normalizeWhatsAppPhone } from '../lib/whatsapp';
 
 const Footer = () => {
   const { content } = useWebsiteContent();
   const brand = content.brand || {};
   const columns = content.footerColumns || defaultFooterColumns;
   const [qrUrl, setQrUrl] = useState('');
+  const whatsappId = brand.whatsapp || fallbackBrand.whatsapp;
+  const whatsappHref = getWhatsAppChatHref(whatsappId);
+  const whatsappDisplay = brand.phone || fallbackBrand.phone;
+  const phoneTel = `+${normalizeWhatsAppPhone(whatsappId)}`;
+
+  const onWhatsAppClick = (e) => {
+    e.preventDefault();
+    openWhatsAppChat(whatsappId);
+  };
 
   useEffect(() => {
     setQrUrl(window.location.origin);
@@ -26,14 +33,14 @@ const Footer = () => {
 
   return (
     <footer className="bmd-footer">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-10 md:py-14">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-6 md:py-14">
         <div className="bmd-footer-grid">
           <div className="bmd-footer-brand">
             <Logo name={brand.name} tagline={brand.slogan || 'Construction Made Easy'} />
-            <p className="mt-3 text-[12px] font-semibold text-white/80">
+            <p className="mt-2 text-[11px] md:text-[12px] font-semibold text-white/80">
               {brand.tagline || 'Building Materials. Made Simple.'}
             </p>
-            <p className="mt-2 bmd-type-small text-white/55 max-w-xs">
+            <p className="mt-1.5 bmd-type-small text-white/55 max-w-xs text-[11px] md:text-[12px] leading-snug">
               {brand.footerBlurb ||
                 'A simpler way to source essential construction materials for your home, project or business.'}
             </p>
@@ -45,13 +52,13 @@ const Footer = () => {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="bmd-type-footer-h text-white mb-4">{col.title}</h3>
-              <ul className="space-y-2.5">
+              <h3 className="bmd-type-footer-h text-white mb-2 md:mb-4">{col.title}</h3>
+              <ul className="space-y-1.5 md:space-y-2.5">
                 {col.links.map((link) => (
                   <li key={`${col.title}-${link.label}`}>
                     <Link
                       to={link.to}
-                      className="bmd-type-body text-white/70 hover:text-[#FFB400] transition-colors"
+                      className="bmd-type-body text-[12px] md:text-[13px] text-white/70 hover:text-[#FFB400] transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -62,31 +69,34 @@ const Footer = () => {
           ))}
 
           <div className="bmd-footer-connect">
-            <div>
-              <h3 className="bmd-type-footer-h text-white mb-4">Connect With Us</h3>
-              <ul className="space-y-2.5 bmd-type-body text-white/70">
-                <li className="flex items-center gap-2">
-                  <FiMail className="text-[#FFB400] shrink-0" size={13} />
-                  {brand.email}
+            <div className="bmd-footer-connect__info">
+              <h3 className="bmd-type-footer-h text-white mb-2 md:mb-4">Connect With Us</h3>
+              <ul className="space-y-1.5 md:space-y-2.5 bmd-type-body text-[12px] md:text-[13px] text-white/70">
+                <li className="flex items-start gap-2">
+                  <FiMail className="text-[#FFB400] shrink-0 mt-0.5" size={13} />
+                  <span>{brand.email}</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <FiPhone className="text-[#FFB400] shrink-0" size={13} />
-                  {brand.phone}
+                <li className="flex items-start gap-2">
+                  <FiPhone className="text-[#FFB400] shrink-0 mt-0.5" size={13} />
+                  <a href={`tel:${phoneTel}`} className="hover:text-[#FFB400] transition-colors">
+                    {whatsappDisplay}
+                  </a>
+                </li>
+                <li className="flex items-start gap-2">
+                  <FaWhatsapp className="text-[#25D366] shrink-0 mt-0.5" size={14} />
+                  <a
+                    href={whatsappHref}
+                    onClick={onWhatsAppClick}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#25D366] transition-colors"
+                  >
+                    WhatsApp {whatsappDisplay}
+                  </a>
                 </li>
               </ul>
-              <div className="mt-5 flex items-center gap-2.5">
-                {[FiFacebook, FiInstagram, FiLinkedin, FiYoutube].map((Icon, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/60 hover:border-[#FFB400] hover:text-[#FFB400] transition-colors"
-                  >
-                    <Icon size={13} />
-                  </a>
-                ))}
-              </div>
             </div>
-            <QrScanCard url={qrUrl} showCaption={false} size={132} />
+            <QrScanCard url={qrUrl} showCaption={false} size={88} className="bmd-footer-qr" />
           </div>
         </div>
       </div>

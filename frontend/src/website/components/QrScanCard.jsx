@@ -5,13 +5,14 @@ const QrScanCard = ({
   caption = 'Scan to Download the App',
   showCaption = true,
   size = 148,
+  className = '',
 }) => {
   const src = url
     ? `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&margin=6&data=${encodeURIComponent(url)}`
     : '';
 
   return (
-    <div className="bmd-qr-scan">
+    <div className={`bmd-qr-scan ${className}`.trim()}>
       <div className="bmd-qr-scan__frame" style={{ width: size + 20, height: size + 20 }}>
         <span className="bmd-qr-scan__corner bmd-qr-scan__corner--tl" aria-hidden="true" />
         <span className="bmd-qr-scan__corner bmd-qr-scan__corner--tr" aria-hidden="true" />

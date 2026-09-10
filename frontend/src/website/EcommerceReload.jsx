@@ -7,8 +7,8 @@ const EcommerceReload = () => {
 
   return (
     <div
-      className="min-h-screen bg-black text-[#FFB400] flex items-center justify-center text-sm font-bold tracking-[0.2em] uppercase"
-      style={{ fontFamily: "'Oswald', sans-serif" }}
+      className="min-h-screen bg-black text-[#FFB400] flex items-center justify-center text-sm font-semibold tracking-[0.08em] uppercase"
+      style={{ fontFamily: "'Manrope', sans-serif" }}
     >
       Opening app…
     </div>

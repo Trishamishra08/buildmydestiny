@@ -39,8 +39,8 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-[80] bg-[#0a0a0a] border-b border-white/5">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-10 h-[64px] md:h-[70px] flex items-center justify-between gap-3">
+    <header className="sticky top-0 z-[80] bg-[#1f1f1f] border-b border-white/5">
+      <div className="max-w-[1440px] mx-auto pl-3 pr-3 sm:px-4 md:px-6 lg:px-10 h-[64px] md:h-[70px] flex items-center justify-between gap-2 sm:gap-3">
             <Logo theme="dark" name={content.brand?.name} tagline={content.brand?.slogan || 'Construction Made Easy'} compact />
 
         <nav className="hidden xl:flex items-center gap-5 2xl:gap-6">
@@ -80,7 +80,7 @@ const Header = () => {
       </div>
 
       {open && (
-        <div className="xl:hidden border-t border-white/10 bg-[#0a0a0a]">
+        <div className="xl:hidden border-t border-white/10 bg-[#1f1f1f]">
           <nav className="flex flex-col px-5 py-3 max-h-[70vh] overflow-y-auto">
             {HEADER_NAV.map((link) => (
               <Link

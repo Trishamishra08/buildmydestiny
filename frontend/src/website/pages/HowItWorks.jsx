@@ -9,7 +9,7 @@ const HowItWorks = () => {
   const { howSteps, howMantra, why, heroImages } = content;
 
   return (
-    <div className="bg-[#0a0a0a]">
+    <div className="bg-[#1f1f1f]">
       <PageHero
         eyebrow="How It Works"
         title={howMantra}

@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import ScrollFillHeading from '../components/ScrollFillHeading';
+import HeroBanner from '../components/HeroBanner';
 import CategoryCard from '../components/CategoryCard';
 import PlayStorePhoneMockup from '../components/PlayStorePhoneMockup';
 import QrScanCard from '../components/QrScanCard';
@@ -56,7 +57,32 @@ const HERO_FEATURES = [
   },
 ];
 
-const HERO_IMAGE = '/website/hero-banner-main.jpg';
+/** Photo banners — autoplay 3s (text is separate HTML overlay) */
+const HERO_BANNERS = [
+  {
+    src: '/website/banner_1.jpg?v=6',
+    mobileSrc: '/website/banner_1_m.jpg?v=6',
+    alt: 'Construction site materials at sunset',
+    theme: 'dark',
+    script: ['Stronger Homes,', 'Brighter Futures'],
+  },
+  {
+    src: '/website/banner_2.jpg?v=6',
+    mobileSrc: '/website/banner_2_m.jpg?v=6',
+    alt: 'Construction materials — rebar, cement, bricks and hard hat',
+    theme: 'dark',
+    script: ['Materials Today', 'Stronger Tomorrow'],
+    lead: 'Quality construction materials. Verified suppliers. A simpler way to build.',
+    hideBody: true,
+  },
+  {
+    src: '/website/banner_3.jpg?v=6',
+    mobileSrc: '/website/banner_3_m.jpg?v=6',
+    alt: 'Construction materials at a building site',
+    theme: 'light',
+    script: ['From Blueprints', 'to Beautiful Spaces'],
+  },
+];
 
 const WHY_IMAGE = '/website/why-worker-sunset.jpg';
 
@@ -231,25 +257,25 @@ const AUDIENCE_CARDS = [
   {
     title: 'For Homeowners',
     text: 'Build your home with a simpler material-sourcing journey.',
-    image: '/website/audience-homeowners.jpg',
+    image: '/website/audience-homeowners.jpg?v=8',
     Icon: House,
   },
   {
     title: 'For Contractors',
     text: 'Make regular material procurement easier to organise and manage.',
-    image: '/website/audience-contractors.jpg',
+    image: '/website/audience-contractors.jpg?v=8',
     Icon: HardHat,
   },
   {
     title: 'For Builders & Developers',
     text: 'Support project requirements with a more connected material-sourcing experience.',
-    image: '/website/audience-builders.jpg',
+    image: '/website/audience-builders.jpg?v=8',
     Icon: Building2,
   },
   {
     title: 'For Construction Professionals',
     text: 'A straightforward way to connect material requirements with available supply options.',
-    image: '/website/audience-construction.jpg',
+    image: '/website/audience-construction.jpg?v=8',
     Icon: HardHat,
   },
 ];
@@ -262,7 +288,11 @@ const Home = () => {
     appSection,
   } = content;
   const [qrUrl, setQrUrl] = useState('');
+  const [heroSlide, setHeroSlide] = useState(0);
   const heroRef = useRef(null);
+  const activeBanner = HERO_BANNERS[heroSlide] || HERO_BANNERS[0];
+  const isLightHero = activeBanner?.theme === 'light';
+  const scriptLines = activeBanner?.script || ['Stronger Homes,', 'Brighter Futures'];
 
   useEffect(() => {
     setQrUrl(window.location.origin);
@@ -282,25 +312,59 @@ const Home = () => {
 
   return (
     <div className="bg-white overflow-x-clip">
-      {/* Hero — exact reference layout + image */}
-      <section ref={heroRef} className="relative overflow-x-clip overflow-y-hidden bmd-hero-section flex flex-col">
+      {/* Hero — clean photo carousel + separate HTML text overlay */}
+      <section
+        ref={heroRef}
+        className={`relative overflow-x-clip overflow-y-hidden bmd-hero-section bmd-hero-section--overlay flex flex-col${
+          isLightHero ? ' bmd-hero-section--light' : ' bmd-hero-section--dark'
+        }`}
+      >
         <div className="absolute inset-0 z-0">
-          <img
-            src={HERO_IMAGE}
-            alt="Construction site at sunrise"
-            className="bmd-hero-photo w-full h-full object-cover object-center"
+          <HeroBanner
+            slides={HERO_BANNERS}
+            delay={3000}
+            onSlideChange={setHeroSlide}
           />
           <div className="absolute inset-0 bmd-hero-overlay pointer-events-none" />
         </div>
 
-        <div className="relative z-10 flex-1 max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 w-full flex flex-col justify-center py-6 md:py-8 min-w-0">
-          <div className="max-w-3xl min-w-0 pr-2">
+        <motion.div
+          key={`script-${heroSlide}`}
+          initial={{ opacity: 0, y: 10, rotate: -6 }}
+          animate={{ opacity: 1, y: 0, rotate: -8 }}
+          transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          className={`bmd-hero-script${isLightHero ? ' bmd-hero-script--on-light' : ''}`}
+          aria-hidden="true"
+        >
+          {scriptLines.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+          <span className="bmd-hero-script__stroke" />
+        </motion.div>
+
+        <div className="relative z-10 flex-1 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 w-full flex flex-col justify-center py-3 md:py-7 min-w-0 pointer-events-none bmd-hero-copy">
+          <div className="max-w-3xl min-w-0">
+            <motion.div
+              key={`eyebrow-${heroSlide}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="bmd-hero-eyebrow"
+            >
+              <span className="bmd-hero-eyebrow__line" aria-hidden="true" />
+              <span>Build Material Sourcing Platform</span>
+            </motion.div>
+
             <ScrollFillHeading
               as="h1"
               variant="hero"
-              theme="dark"
+              theme={isLightHero ? 'light' : 'dark'}
               triggerRef={heroRef}
-              className="bmd-type-h1 bmd-hero-title text-white"
+              className={`bmd-type-h1 bmd-hero-title mt-1.5 md:mt-3 ${
+                isLightHero ? 'text-black' : 'text-white'
+              }`}
             >
               <span className="block">Build Your Dream.</span>
               <span className="block bmd-accent">We&apos;ll Help You</span>
@@ -308,41 +372,48 @@ const Home = () => {
             </ScrollFillHeading>
 
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              key={`lead-${heroSlide}`}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.06 }}
-              className="bmd-type-lead mt-3 md:mt-4 text-white"
+              transition={{ duration: 0.4, delay: 0.45 }}
+              className={`bmd-type-lead mt-1.5 md:mt-3 ${isLightHero ? 'text-black' : 'text-white'}`}
             >
-              Everything you need to source building materials, made simpler.
+              {activeBanner?.lead ||
+                'Everything you need to source building materials, made simpler.'}
             </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.1 }}
-              className="bmd-type-body mt-2 max-w-xl text-white/90"
-            >
-              From cement and TMT steel to bricks, aggregates and other construction essentials,
-              Build My Destiny helps you discover material options, compare what fits your project
-              and place your requirement through one simple platform.
-            </motion.p>
+            {activeBanner?.hideBody ? null : (
+              <motion.p
+                key={`body-${heroSlide}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.52 }}
+                className={`bmd-type-body mt-1.5 max-w-xl bmd-hero-body ${
+                  isLightHero ? 'text-black/70' : 'text-white/90'
+                }`}
+              >
+                From cement and TMT steel to bricks, aggregates and other construction essentials,
+                Build My Destiny helps you discover material options, compare what fits your project
+                and place your requirement through one simple platform.
+              </motion.p>
+            )}
 
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              key={`cta-${heroSlide}`}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.14 }}
-              className="mt-5 md:mt-6 flex flex-wrap items-center gap-3"
+              transition={{ duration: 0.4, delay: 0.58 }}
+              className="mt-3 md:mt-5 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2 sm:gap-3 pointer-events-auto bmd-hero-cta"
             >
-              <Link
-                to="/contact"
-                className="bmd-type-btn inline-flex items-center gap-2 h-11 px-6 bg-[#FFB400] text-black hover:bg-[#ffc433] transition-colors rounded-md"
-              >
+              <Link to="/contact" className="bmd-hero-btn bmd-hero-btn--primary">
                 Get a Quote
                 <ArrowRight size={15} strokeWidth={2.5} />
               </Link>
               <Link
                 to="/products"
-                className="bmd-type-btn inline-flex items-center gap-2 h-11 px-6 border border-[#FFB400] text-white hover:bg-[#FFB400]/10 transition-colors rounded-md"
+                className={`bmd-hero-btn ${
+                  isLightHero ? 'bmd-hero-btn--ghost-dark' : 'bmd-hero-btn--ghost'
+                }`}
               >
                 Explore Materials
                 <ArrowRight size={15} strokeWidth={2.5} />
@@ -351,25 +422,39 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="relative z-10 w-full bmd-hero-features-bar shrink-0">
-          <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-3.5 md:py-4">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+        <div className="relative z-10 w-full bmd-hero-features-bar shrink-0 pointer-events-none">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 py-2 md:py-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 bmd-hero-features-grid">
               {HERO_FEATURES.map((item, idx) => {
                 const Icon = item.Icon;
                 return (
                   <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 12 }}
+                    key={`${item.title}-${heroSlide}`}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.35 + idx * 0.06 }}
-                    className="flex items-start gap-3"
+                    transition={{ delay: 0.62 + idx * 0.06, duration: 0.35 }}
+                    className="bmd-hero-feature"
                   >
-                    <Icon className="text-[#FFB400] shrink-0 mt-0.5" size={26} strokeWidth={1.6} />
+                    <Icon
+                      className={`shrink-0 mt-0.5 ${
+                        isLightHero ? 'text-[#E6A000]' : 'text-[#FFB400]'
+                      }`}
+                      size={26}
+                      strokeWidth={1.6}
+                    />
                     <div className="min-w-0">
-                      <p className="bmd-type-h3 text-white">
+                      <p
+                        className={`bmd-type-h3 ${
+                          isLightHero ? 'text-black' : 'text-white'
+                        }`}
+                      >
                         {item.title}
                       </p>
-                      <p className="bmd-type-caption text-white/60 mt-1">
+                      <p
+                        className={`bmd-type-caption mt-1 bmd-hero-feature__text ${
+                          isLightHero ? 'text-black/55' : 'text-white/65'
+                        }`}
+                      >
                         {item.text}
                       </p>
                     </div>
@@ -382,9 +467,9 @@ const Home = () => {
       </section>
 
       {/* All Materials */}
-      <section id="materials" className="bg-white pt-6 pb-6 md:pt-8 md:pb-8">
+      <section id="materials" className="bg-white pt-4 pb-4 md:pt-8 md:pb-8">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
-          <div className="text-center mb-4 md:mb-5">
+          <div className="text-center mb-3 md:mb-5">
             <div className="flex items-center justify-center gap-3 mb-2">
               <span className="w-8 h-[2px] bg-[#FFB400]" />
               <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#FFB400]">
@@ -441,9 +526,9 @@ const Home = () => {
       </section>
 
       {/* Why Build My Destiny */}
-      <section id="why" className="bmd-why-section py-5 md:py-6">
+      <section id="why" className="bmd-why-section py-4 md:py-6">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-start">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-10 items-start">
             <div className="bmd-why-intro">
               <div className="bmd-why-copy">
                 <div className="flex items-center gap-3 mb-2">
@@ -452,10 +537,10 @@ const Home = () => {
                     Why Build My Destiny?
                   </span>
                 </div>
-                <h2 className="bmd-type-h2 text-black">
+                <ScrollFillHeading as="h2" theme="light" className="bmd-type-h2 text-black">
                   Everything You Need to Build.
                   <span className="block">One Simpler Way.</span>
-                </h2>
+                </ScrollFillHeading>
                 <p className="mt-2.5 text-[#4a4a4a] text-[13px] leading-relaxed">
                   Finding the right construction materials can take time and effort. Build My Destiny
                   is designed to make the process simpler by bringing material discovery, ordering and
@@ -477,7 +562,7 @@ const Home = () => {
                 <span className="bmd-why-photo-fade" aria-hidden="true" />
               </div>
             </div>
-            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-5">
+            <div className="grid sm:grid-cols-2 gap-x-4 gap-y-3 md:gap-x-6 md:gap-y-5">
               {WHY_FEATURES.map((item, idx) => {
                 const Icon = item.Icon;
                 return (
@@ -498,9 +583,9 @@ const Home = () => {
       </section>
 
       {/* How it works */}
-      <section id="how-it-works" className="bg-white py-6 md:py-8">
+      <section id="how-it-works" className="bg-white py-4 md:py-8">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
-          <div className="text-center mb-5 md:mb-6">
+          <div className="text-center mb-3.5 md:mb-6">
             <div className="flex items-center justify-center gap-3 mb-2">
               <span className="w-8 h-[2px] bg-[#FFB400]" />
               <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-black">
@@ -508,10 +593,12 @@ const Home = () => {
               </span>
               <span className="w-8 h-[2px] bg-[#FFB400]" />
             </div>
-            <h2 className="bmd-type-h2 text-black">Simple From Requirement to Delivery.</h2>
+            <ScrollFillHeading as="h2" theme="light" className="bmd-type-h2 text-black">
+              Simple From Requirement to Delivery.
+            </ScrollFillHeading>
           </div>
 
-          <div className="bmd-how-track relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-3">
+          <div className="bmd-how-track relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 lg:gap-3">
             {HOW_STEPS.map((step, idx) => {
               const Icon = step.Icon;
               return (
@@ -531,7 +618,7 @@ const Home = () => {
             })}
           </div>
 
-          <div className="mt-6 text-center">
+          <div className="mt-4 md:mt-6 text-center">
             <Link
               to="/contact"
               className="bmd-type-btn inline-flex h-11 px-6 items-center gap-2 bg-[#FFB400] text-black hover:bg-[#ffc433] transition-colors rounded-md"
@@ -549,21 +636,21 @@ const Home = () => {
           <div className="bmd-dealer-copy">
             <div className="flex items-center gap-3 mb-2">
               <span className="w-7 h-[2px] bg-[#FFB400]" />
-              <span className="text-[10px] md:text-[11px] font-semibold tracking-[0.18em] uppercase text-white">
+              <span className="bmd-type-footer-h text-white/90">
                 Become a Dealer
               </span>
             </div>
-            <h2 className="text-white text-[1.25rem] md:text-[1.5rem] font-semibold leading-[1.25] tracking-[-0.01em]">
+            <h2 className="bmd-dealer-heading text-white max-w-full">
               Grow Your Construction-Material Business with Build My Destiny.
             </h2>
-            <p className="mt-2 text-white/70 text-[12px] md:text-[13px] leading-relaxed max-w-[280px]">
+            <p className="bmd-dealer-lead mt-2 text-white/70 max-w-full md:max-w-[320px]">
               Join a growing platform designed to help construction-material businesses reach more
               customers and explore new opportunities.
             </p>
-            <div className="mt-3.5 w-fit">
+            <div className="mt-3 w-full sm:w-fit">
               <Link
                 to="/dealers"
-                className="bmd-type-btn inline-flex h-9 px-4 items-center gap-1.5 bg-[#FFB400] text-black hover:bg-[#ffc433] transition-colors rounded-md"
+                className="bmd-type-btn inline-flex h-9 px-4 items-center justify-center gap-1.5 bg-[#FFB400] text-black hover:bg-[#ffc433] transition-colors rounded-md w-full sm:w-auto"
               >
                 Join as a Dealer
                 <ArrowRight size={14} strokeWidth={2.5} />
@@ -576,11 +663,11 @@ const Home = () => {
               const Icon = item.Icon;
               return (
                 <div key={item.title} className="bmd-dealer-point">
-                  <Icon className="text-[#FFB400] mx-auto" size={22} strokeWidth={1.55} />
-                  <h3 className="mt-2 text-[11px] md:text-[12px] font-semibold text-white leading-snug">
+                  <Icon className="text-[#FFB400] mx-auto" size={18} strokeWidth={1.55} />
+                  <h3 className="bmd-dealer-point__title">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-[10px] md:text-[10.5px] text-white/60 leading-snug">
+                  <p className="bmd-dealer-point__text">
                     {item.text}
                   </p>
                 </div>
@@ -595,9 +682,9 @@ const Home = () => {
       </section>
 
       {/* Audience — For Every Kind of Builder */}
-      <section id="audience" className="bg-[#f2f2f2] py-6 md:py-8">
+      <section id="audience" className="bg-[#f2f2f2] py-4 md:py-8">
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
-          <div className="text-center mb-5 md:mb-6">
+          <div className="text-center mb-3.5 md:mb-6">
             <div className="flex items-center justify-center gap-3 mb-2">
               <span className="w-8 h-[2px] bg-[#FFB400]" />
               <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-black">
@@ -605,24 +692,42 @@ const Home = () => {
               </span>
               <span className="w-8 h-[2px] bg-[#FFB400]" />
             </div>
-            <h2 className="bmd-type-h2 text-black">One Platform. Different Construction Needs.</h2>
+            <ScrollFillHeading as="h2" theme="light" className="bmd-type-h2 text-black text-center mx-auto">
+              One Platform. Different Construction Needs.
+            </ScrollFillHeading>
           </div>
           <div className="bmd-audience-grid">
-            {AUDIENCE_CARDS.map((card) => {
+            {AUDIENCE_CARDS.map((card, idx) => {
               const Icon = card.Icon;
               return (
                 <article key={card.title} className="bmd-audience-card">
                   <div className="bmd-audience-card__copy">
-                    <Icon className="text-[#FFB400] mb-2 block" size={24} strokeWidth={1.5} />
+                    <Icon className="bmd-audience-card__icon" size={18} strokeWidth={1.5} />
                     <h3>{card.title}</h3>
                     <p>{card.text}</p>
                   </div>
-                  <div className="bmd-audience-card__media">
+                  <div
+                    className="bmd-audience-card__media"
+                    style={{ backgroundImage: `url(${card.image})` }}
+                    role="img"
+                    aria-label={card.title}
+                  >
                     <img
-                      src={`${card.image}?v=5`}
+                      src={card.image}
                       alt={card.title}
                       className="bmd-audience-card__img"
-                      loading="lazy"
+                      width={900}
+                      height={560}
+                      loading={idx < 2 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      onError={(e) => {
+                        const fallback = '/website/hardhat.jpg?v=8';
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = fallback;
+                        if (e.currentTarget.parentElement) {
+                          e.currentTarget.parentElement.style.backgroundImage = `url(${fallback})`;
+                        }
+                      }}
                     />
                   </div>
                 </article>
@@ -637,17 +742,25 @@ const Home = () => {
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 bmd-app-grid">
           <div className="bmd-app-device">
             <PlayStorePhoneMockup
+              className="bmd-app-phone"
               appName={content.brand?.name || 'Build My Destiny'}
               developer={content.brand?.name || 'Build My Destiny'}
               tagline={content.brand?.tagline || appSection.body}
               comingSoon={home.comingSoon}
-              screenshots={(materials?.categories || []).slice(0, 4).map((c) => c.image)}
+              screenshots={[
+                '/website/cutout-bricks.png',
+                '/website/cutout-blocks.png',
+                '/website/cutout-cement.png',
+                '/website/cutout-steel.png',
+              ]}
             />
-            <QrScanCard url={qrUrl} caption="Scan to Download the App" size={132} />
+            <QrScanCard url={qrUrl} caption="Scan to Download" size={88} className="bmd-app-qr" />
           </div>
 
           <div className="bmd-app-copy">
-            <h2 className="bmd-app-copy__heading">Build My Destiny App</h2>
+            <ScrollFillHeading as="h2" theme="dark" className="bmd-app-copy__heading">
+              Build My Destiny App
+            </ScrollFillHeading>
             <p className="bmd-app-copy__title">Your Construction Journey, Made Simple.</p>
             <div className="bmd-app-steps">
               {APP_STEP_ITEMS.map((step, i) => (
@@ -682,7 +795,7 @@ const Home = () => {
       <section className="bmd-promise-section">
         <div className="bmd-promise-photo">
           <img
-            src={`${PROMISE_IMAGE}?v=1`}
+            src={`${PROMISE_IMAGE}?v=2`}
             alt="Build My Destiny construction specialist"
           />
         </div>
@@ -692,9 +805,9 @@ const Home = () => {
               <span className="bmd-promise-eyebrow__line" />
               <span className="bmd-promise-eyebrow__label">Our Promise to You</span>
             </div>
-            <h2 className="bmd-promise-heading">
+            <ScrollFillHeading as="h2" theme="light" className="bmd-promise-heading">
               Built Around a Better Construction Experience.
-            </h2>
+            </ScrollFillHeading>
             <div className="bmd-promise-cards">
               {PROMISE_CARDS.map((item) => {
                 const Icon = item.Icon;

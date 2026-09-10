@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import WhatsAppFloat from './components/WhatsAppFloat';
 import { getGsap } from './lib/gsapScroll';
 import './styles.css';
 
@@ -25,12 +26,13 @@ const WebsiteLayout = () => {
   }, [location.pathname]);
 
   return (
-    <div className="bmd-site relative min-h-screen flex flex-col bg-[#0a0a0a] overflow-x-clip">
+    <div className="bmd-site relative min-h-screen flex flex-col bg-[#1f1f1f] overflow-x-clip">
       <Header />
       <main className="flex-1 min-w-0 overflow-x-clip">
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 };

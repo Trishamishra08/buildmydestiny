@@ -4,11 +4,16 @@ export const brand = {
   slogan: 'Construction Made Easy',
   footerBlurb:
     'A simpler way to source essential construction materials for your home, project or business.',
-  phone: '+91 12345 67890',
+  phone: '+91 88260 70700',
+  whatsapp: '918826070700',
   email: 'info@buildmydestiny.com',
   web: 'www.buildmydestiny.com',
   location: 'India',
 };
+
+export const WHATSAPP_HREF = `https://web.whatsapp.com/send?phone=${brand.whatsapp}&text=${encodeURIComponent(
+  'Hi Build My Destiny, I would like to enquire about construction materials.'
+)}`;
 
 export const navLinks = [
   { label: 'Home', to: '/' },
@@ -439,12 +444,23 @@ export const isLegacyEcommercePath = (pathname) =>
   ECOMMERCE_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
 export const heroImages = {
-  background: '/website/hero-banner-main.jpg',
+  background: '/website/banner_1.jpg?v=6',
   slides: [
-    { src: '/website/hero-banner-main.jpg', alt: 'Cement, bricks and blocks at sunset' },
-    { src: '/website/hero-banner-cement.jpg', alt: 'Cement bags for construction' },
-    { src: '/website/hero-banner-bricks.jpg', alt: 'Bricks and concrete blocks' },
-    { src: '/website/hero-banner-steel.jpg', alt: 'TMT steel and cement' },
+    {
+      src: '/website/banner_1.jpg?v=6',
+      mobileSrc: '/website/banner_1_m.jpg?v=6',
+      alt: 'Construction site materials at sunset',
+    },
+    {
+      src: '/website/banner_2.jpg?v=6',
+      mobileSrc: '/website/banner_2_m.jpg?v=6',
+      alt: 'Construction materials — rebar, cement, bricks and hard hat',
+    },
+    {
+      src: '/website/banner_3.jpg?v=6',
+      mobileSrc: '/website/banner_3_m.jpg?v=6',
+      alt: 'Construction materials at a building site',
+    },
   ],
   collage: [
     { src: '/website/cutout-cement.png', alt: 'Cement' },
