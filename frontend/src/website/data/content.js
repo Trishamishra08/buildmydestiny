@@ -444,21 +444,21 @@ export const isLegacyEcommercePath = (pathname) =>
   ECOMMERCE_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
 export const heroImages = {
-  background: '/website/banner_1.jpg?v=6',
+  background: '/website/banner_1.jpg?v=8',
   slides: [
     {
-      src: '/website/banner_1.jpg?v=6',
-      mobileSrc: '/website/banner_1_m.jpg?v=6',
+      src: '/website/banner_1.jpg?v=8',
+      mobileSrc: '/website/banner_1_m.jpg?v=8',
       alt: 'Construction site materials at sunset',
     },
     {
-      src: '/website/banner_2.jpg?v=6',
-      mobileSrc: '/website/banner_2_m.jpg?v=6',
+      src: '/website/banner_2.jpg?v=8',
+      mobileSrc: '/website/banner_2_m.jpg?v=8',
       alt: 'Construction materials — rebar, cement, bricks and hard hat',
     },
     {
-      src: '/website/banner_3.jpg?v=6',
-      mobileSrc: '/website/banner_3_m.jpg?v=6',
+      src: '/website/banner_3.jpg?v=8',
+      mobileSrc: '/website/banner_3_m.jpg?v=8',
       alt: 'Construction materials at a building site',
     },
   ],

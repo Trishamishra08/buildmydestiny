@@ -25,7 +25,7 @@ const CategoryCard = ({ name, image, stagger = 0, compact = false, variant = 'ex
         className={
           isCatalog
             ? 'group bmd-material-tile flex flex-col items-center text-center h-full cursor-pointer'
-            : 'group relative z-[1] block bg-white border border-black/10 rounded-md overflow-hidden hover:border-[#FFB400] hover:shadow-md transition-colors duration-300 h-full cursor-pointer'
+            : 'group relative z-[1] block bg-white border border-black/10 rounded-md overflow-hidden h-full cursor-pointer'
         }
       >
         <div
@@ -42,8 +42,8 @@ const CategoryCard = ({ name, image, stagger = 0, compact = false, variant = 'ex
             alt={name}
             className={
               isCatalog
-                ? 'bmd-material-cutout h-[6.25rem] md:h-[7.25rem] w-[94%] object-contain object-bottom group-hover:scale-105 transition-transform duration-500 pointer-events-none'
-                : 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none'
+                ? 'bmd-material-cutout h-[6.25rem] md:h-[7.25rem] w-[94%] object-contain object-bottom pointer-events-none'
+                : 'w-full h-full object-cover pointer-events-none'
             }
           />
         </div>
@@ -60,7 +60,7 @@ const CategoryCard = ({ name, image, stagger = 0, compact = false, variant = 'ex
           {isCatalog ? (
             <span className="mt-1.5 mx-auto block w-6 h-[2px] bg-[#FFB400]" />
           ) : (
-            <span className="inline-flex items-center gap-0.5 mt-0.5 text-[#FFB400] text-[9px] md:text-[10px] font-bold uppercase tracking-wide group-hover:gap-1 transition-all pointer-events-none">
+            <span className="inline-flex items-center gap-0.5 mt-0.5 text-[#FFB400] text-[9px] md:text-[10px] font-bold uppercase tracking-wide pointer-events-none">
               Explore <ArrowRight size={10} />
             </span>
           )}

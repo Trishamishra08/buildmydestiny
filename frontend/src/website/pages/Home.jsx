@@ -57,18 +57,18 @@ const HERO_FEATURES = [
   },
 ];
 
-/** Photo banners — autoplay 3s (text is separate HTML overlay) */
+/** Photo banners — autoplay ~2.5s (text is separate HTML overlay) */
 const HERO_BANNERS = [
   {
-    src: '/website/banner_1.jpg?v=6',
-    mobileSrc: '/website/banner_1_m.jpg?v=6',
+    src: '/website/banner_1.jpg?v=8',
+    mobileSrc: '/website/banner_1_m.jpg?v=8',
     alt: 'Construction site materials at sunset',
     theme: 'dark',
     script: ['Stronger Homes,', 'Brighter Futures'],
   },
   {
-    src: '/website/banner_2.jpg?v=6',
-    mobileSrc: '/website/banner_2_m.jpg?v=6',
+    src: '/website/banner_2.jpg?v=8',
+    mobileSrc: '/website/banner_2_m.jpg?v=8',
     alt: 'Construction materials — rebar, cement, bricks and hard hat',
     theme: 'dark',
     script: ['Materials Today', 'Stronger Tomorrow'],
@@ -76,8 +76,8 @@ const HERO_BANNERS = [
     hideBody: true,
   },
   {
-    src: '/website/banner_3.jpg?v=6',
-    mobileSrc: '/website/banner_3_m.jpg?v=6',
+    src: '/website/banner_3.jpg?v=8',
+    mobileSrc: '/website/banner_3_m.jpg?v=8',
     alt: 'Construction materials at a building site',
     theme: 'light',
     script: ['From Blueprints', 'to Beautiful Spaces'],
@@ -187,6 +187,7 @@ const DEALER_POINTS = [
 ];
 
 const PROMISE_IMAGE = '/website/promise-worker.jpg';
+const PROMISE_IMAGE_MOBILE = '/website/promise-worker-m.jpg';
 const DEALER_IMAGE = '/website/dealer-worker.jpg';
 
 const APP_HIGHLIGHTS = [
@@ -322,7 +323,7 @@ const Home = () => {
         <div className="absolute inset-0 z-0">
           <HeroBanner
             slides={HERO_BANNERS}
-            delay={3000}
+            delay={2500}
             onSlideChange={setHeroSlide}
           />
           <div className="absolute inset-0 bmd-hero-overlay pointer-events-none" />
@@ -407,7 +408,7 @@ const Home = () => {
             >
               <Link to="/contact" className="bmd-hero-btn bmd-hero-btn--primary">
                 Get a Quote
-                <ArrowRight size={15} strokeWidth={2.5} />
+                <ArrowRight size={15} strokeWidth={2.5} className="bmd-hero-btn__icon" />
               </Link>
               <Link
                 to="/products"
@@ -416,7 +417,7 @@ const Home = () => {
                 }`}
               >
                 Explore Materials
-                <ArrowRight size={15} strokeWidth={2.5} />
+                <ArrowRight size={15} strokeWidth={2.5} className="bmd-hero-btn__icon" />
               </Link>
             </motion.div>
           </div>
@@ -503,9 +504,9 @@ const Home = () => {
             <ScrollReveal stagger={0.35} y={16} scale={0.96}>
               <Link
                 to="/products"
-                className="group bmd-material-tile flex flex-col items-center justify-center h-full py-4"
+                className="bmd-material-tile flex flex-col items-center justify-center h-full py-4"
               >
-                <MoreHorizontal className="text-black/35 group-hover:text-[#FFB400] mb-1.5" size={22} strokeWidth={1.75} />
+                <MoreHorizontal className="text-black/35 mb-1.5" size={22} strokeWidth={1.75} />
                 <span className="text-[12px] font-semibold text-black text-center px-1 leading-snug">
                   More Construction Materials
                 </span>
@@ -754,7 +755,7 @@ const Home = () => {
                 '/website/cutout-steel.png',
               ]}
             />
-            <QrScanCard url={qrUrl} caption="Scan to Download" size={88} className="bmd-app-qr" />
+            <QrScanCard url={qrUrl} caption="Scan to Download" size={84} className="bmd-app-qr" />
           </div>
 
           <div className="bmd-app-copy">
@@ -794,10 +795,13 @@ const Home = () => {
       {/* Our Promise */}
       <section className="bmd-promise-section">
         <div className="bmd-promise-photo">
-          <img
-            src={`${PROMISE_IMAGE}?v=2`}
-            alt="Build My Destiny construction specialist"
-          />
+          <picture>
+            <source media="(max-width: 767px)" srcSet={`${PROMISE_IMAGE_MOBILE}?v=3`} />
+            <img
+              src={`${PROMISE_IMAGE}?v=2`}
+              alt="Build My Destiny construction specialist"
+            />
+          </picture>
         </div>
         <div className="bmd-promise-inner max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
           <div className="bmd-promise-main">

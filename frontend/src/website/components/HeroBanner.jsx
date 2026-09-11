@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -7,12 +7,19 @@ import 'swiper/css/pagination';
 
 const HeroBanner = ({
   slides = [],
-  delay = 3000,
+  delay = 2500,
   onSlideChange,
   className = '',
 }) => {
   const items = slides.filter((slide) => slide?.src);
+  const swiperRef = useRef(null);
   if (!items.length) return null;
+
+  const resumeAutoplay = () => {
+    const swiper = swiperRef.current;
+    if (!swiper?.autoplay) return;
+    swiper.autoplay.start();
+  };
 
   return (
     <Swiper
@@ -20,15 +27,23 @@ const HeroBanner = ({
       effect="fade"
       fadeEffect={{ crossFade: true }}
       loop={items.length > 1}
-      speed={1100}
+      speed={900}
       autoplay={{
         delay,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true,
+        pauseOnMouseEnter: false,
+        waitForTransition: true,
       }}
       pagination={{ clickable: true }}
       observer
       observeParents
+      allowTouchMove
+      onSwiper={(swiper) => {
+        swiperRef.current = swiper;
+        swiper.autoplay?.start();
+      }}
+      onTouchEnd={resumeAutoplay}
+      onSlideChangeTransitionEnd={resumeAutoplay}
       onSlideChange={(swiper) => {
         onSlideChange?.(swiper.realIndex);
       }}
