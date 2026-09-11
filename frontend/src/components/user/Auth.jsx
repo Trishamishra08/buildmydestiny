@@ -183,7 +183,7 @@ const Auth = () => {
         {/* LEFT PANEL (Image & Wave) */}
         <div className="relative w-full md:w-[50%] lg:w-[55%] h-[32vh] sm:h-[40vh] md:h-full shrink-0">
           <img 
-            src="/auth-bg.png" 
+            src="/auth-bg.webp" 
             alt="Ayurvedic Background" 
             className="absolute inset-0 w-full h-full object-cover" 
           />

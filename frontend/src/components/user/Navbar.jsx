@@ -389,7 +389,7 @@ const Navbar = () => {
                           </div>
                           {/* Column 4: Promotional Block */}
                           <div className="flex flex-col rounded-xl overflow-hidden group/promo relative bg-[#F4F8F5]">
-                            <img src="/skin_care_offer.png" alt="Ayurvedic Wellness" className="w-full h-32 object-cover opacity-90 group-hover/promo:scale-105 transition-transform duration-500" />
+                            <img src="/skin_care_offer.webp" alt="Ayurvedic Wellness" className="w-full h-32 object-cover opacity-90 group-hover/promo:scale-105 transition-transform duration-500" />
                             <div className="p-4 flex flex-col items-center text-center">
                               <h4 className="text-[14px] font-serif font-bold text-[#054425] mb-1">Authentic Care</h4>
                               <p className="text-[10px] text-gray-500 mb-3">Discover the ancient secrets of beauty & wellness.</p>

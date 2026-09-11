@@ -60,15 +60,15 @@ const HERO_FEATURES = [
 /** Photo banners — autoplay ~2.5s (text is separate HTML overlay) */
 const HERO_BANNERS = [
   {
-    src: '/website/banner_1.jpg?v=8',
-    mobileSrc: '/website/banner_1_m.jpg?v=8',
+    src: '/website/banner_1.webp?v=9',
+    mobileSrc: '/website/banner_1_m.webp?v=9',
     alt: 'Construction site materials at sunset',
     theme: 'dark',
     script: ['Stronger Homes,', 'Brighter Futures'],
   },
   {
-    src: '/website/banner_2.jpg?v=8',
-    mobileSrc: '/website/banner_2_m.jpg?v=8',
+    src: '/website/banner_2.webp?v=9',
+    mobileSrc: '/website/banner_2_m.webp?v=9',
     alt: 'Construction materials — rebar, cement, bricks and hard hat',
     theme: 'dark',
     script: ['Materials Today', 'Stronger Tomorrow'],
@@ -76,15 +76,15 @@ const HERO_BANNERS = [
     hideBody: true,
   },
   {
-    src: '/website/banner_3.jpg?v=8',
-    mobileSrc: '/website/banner_3_m.jpg?v=8',
+    src: '/website/banner_3.webp?v=9',
+    mobileSrc: '/website/banner_3_m.webp?v=9',
     alt: 'Construction materials at a building site',
     theme: 'light',
     script: ['From Blueprints', 'to Beautiful Spaces'],
   },
 ];
 
-const WHY_IMAGE = '/website/why-worker-sunset.jpg';
+const WHY_IMAGE = '/website/why-worker-sunset.webp';
 
 const WHY_FEATURES = [
   {
@@ -186,9 +186,9 @@ const DEALER_POINTS = [
   },
 ];
 
-const PROMISE_IMAGE = '/website/promise-worker.jpg';
-const PROMISE_IMAGE_MOBILE = '/website/promise-worker-m.jpg';
-const DEALER_IMAGE = '/website/dealer-worker.jpg';
+const PROMISE_IMAGE = '/website/promise-worker.webp';
+const PROMISE_IMAGE_MOBILE = '/website/promise-worker-m.webp';
+const DEALER_IMAGE = '/website/dealer-worker.webp';
 
 const APP_HIGHLIGHTS = [
   { text: 'Explore a range of materials', Icon: LayoutGrid },
@@ -258,25 +258,25 @@ const AUDIENCE_CARDS = [
   {
     title: 'For Homeowners',
     text: 'Build your home with a simpler material-sourcing journey.',
-    image: '/website/audience-homeowners.jpg?v=8',
+    image: '/website/audience-homeowners.webp?v=9',
     Icon: House,
   },
   {
     title: 'For Contractors',
     text: 'Make regular material procurement easier to organise and manage.',
-    image: '/website/audience-contractors.jpg?v=8',
+    image: '/website/audience-contractors.webp?v=9',
     Icon: HardHat,
   },
   {
     title: 'For Builders & Developers',
     text: 'Support project requirements with a more connected material-sourcing experience.',
-    image: '/website/audience-builders.jpg?v=8',
+    image: '/website/audience-builders.webp?v=9',
     Icon: Building2,
   },
   {
     title: 'For Construction Professionals',
     text: 'A straightforward way to connect material requirements with available supply options.',
-    image: '/website/audience-construction.jpg?v=8',
+    image: '/website/audience-construction.webp?v=9',
     Icon: HardHat,
   },
 ];
@@ -749,10 +749,10 @@ const Home = () => {
               tagline={content.brand?.tagline || appSection.body}
               comingSoon={home.comingSoon}
               screenshots={[
-                '/website/cutout-bricks.png',
-                '/website/cutout-blocks.png',
-                '/website/cutout-cement.png',
-                '/website/cutout-steel.png',
+                '/website/cutout-bricks.webp',
+                '/website/cutout-blocks.webp',
+                '/website/cutout-cement.webp',
+                '/website/cutout-steel.webp',
               ]}
             />
             <QrScanCard url={qrUrl} caption="Scan to Download" size={84} className="bmd-app-qr" />

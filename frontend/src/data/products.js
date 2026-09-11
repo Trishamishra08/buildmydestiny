@@ -79,7 +79,7 @@ export const initialProducts = [
     oldPrice: 699,
     rating: 4.8,
     reviews: 160,
-    image: '/skin_care_offer.png', // Fallback to our stunning generated skincare offer asset
+    image: '/skin_care_offer.webp', // Fallback to our stunning generated skincare offer asset
     category: 'Skin Care',
     packSize: '30 ml',
     description: 'Natural brightening and glow serum infused with Amla extract and Vitamin C.',
@@ -93,7 +93,7 @@ export const initialProducts = [
     oldPrice: 499,
     rating: 4.6,
     reviews: 140,
-    image: '/hair_care_offer.png', // Soft fallback
+    image: '/hair_care_offer.webp', // Soft fallback
     category: 'Health Care',
     packSize: '500 ml',
     description: 'Purifying organic wellness juice for digestion and natural blood cleansing.',
@@ -107,7 +107,7 @@ export const initialProducts = [
     oldPrice: 599,
     rating: 4.7,
     reviews: 98,
-    image: '/ayurvedic_hero.png', // Soft fallback
+    image: '/ayurvedic_hero.webp', // Soft fallback
     category: 'Aromatherapy',
     packSize: '15 ml',
     description: 'Pure therapeutic grade rosemary essential oil for focus and hair revitalization.',
@@ -121,7 +121,7 @@ export const initialProducts = [
     oldPrice: 299,
     rating: 4.6,
     reviews: 110,
-    image: '/herbal_tea_offer.png', // Soft fallback
+    image: '/herbal_tea_offer.webp', // Soft fallback
     category: 'Health Care',
     packSize: '100 gm',
     description: 'Classic three-herb digestion support powder sourced from pure organic harvest.',

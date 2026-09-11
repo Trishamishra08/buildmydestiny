@@ -5,7 +5,7 @@ import ScrollFillHeading from './ScrollFillHeading';
 const PageHero = ({ eyebrow, title, subtitle, image, compact = false }) => (
   <section className="relative bg-white overflow-hidden border-b-2 border-[#FFB400]">
     <div className="absolute right-0 top-0 bottom-0 w-[38%] opacity-15 hidden md:block">
-      <img src={image || '/website/material-cement.jpg'} alt="" className="w-full h-full object-cover" />
+      <img src={image || '/website/material-cement.webp'} alt="" className="w-full h-full object-cover" />
     </div>
     <div
       className={`relative max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 ${

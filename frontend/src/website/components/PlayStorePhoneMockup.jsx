@@ -12,7 +12,7 @@ const PlayStorePhoneMockup = ({
   const shots =
     screenshots.length > 0
       ? screenshots
-      : ['/website/cutout-cement.png', '/website/cutout-bricks.png', '/website/cutout-steel.png'];
+      : ['/website/cutout-cement.webp', '/website/cutout-bricks.webp', '/website/cutout-steel.webp'];
 
   return (
     <div className={`relative mx-auto bmd-phone-shell w-[11.25rem] sm:w-[11.75rem] md:w-[12.25rem] ${className}`.trim()}>

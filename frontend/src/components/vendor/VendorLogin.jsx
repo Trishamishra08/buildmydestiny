@@ -65,7 +65,7 @@ const VendorLogin = () => {
         {/* LEFT PANEL (Image & Wave) - Uses a distinct Unsplash image and custom wave */}
         <div className="relative w-full md:w-[50%] lg:w-[55%] h-[32vh] sm:h-[40vh] md:h-full shrink-0">
           <img 
-            src="/ayurvedic_background.png" 
+            src="/ayurvedic_background.webp" 
             alt="Ayurvedic Background" 
             className="absolute inset-0 w-full h-full object-cover" 
           />

@@ -13,3 +13,12 @@ logs
 branch_structure.json
 temp_auto_push.bat
 temp_interactive_push.bat
+
+# Heavy / generated originals — keep WebP in repo
+*.psd
+*.ai
+frontend/public/website/*_ref.png
+frontend/public/website/*_clean.jpg
+frontend/public/website/hero-banner-*.jpg
+frontend/public/website/banner_design_*.jpg
+frontend/src/assets/images/ChatGPT*.png

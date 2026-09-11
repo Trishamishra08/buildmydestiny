@@ -13,7 +13,7 @@ import iconHerbalTea from '../../assets/images/icons/icon_herbal_tea_17799117290
 import iconSupplements from '../../assets/images/icons/icon_supplements_1779911746926.png';
 import iconBodyCare from '../../assets/images/icons/icon_body_care_1779911767707.png';
 import iconAromatherapy from '../../assets/images/icons/icon_aromatherapy_1779911786264.png';
-import iconBabyCare from '../../assets/images/icons/icon_baby_care_1779911800390.png';
+import iconBabyCare from '../../assets/images/icons/icon_baby_care_1779911800390.webp';
 
 const AdminCategories = () => {
   const { categories, products, fetchData } = useShop();

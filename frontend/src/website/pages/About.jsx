@@ -13,7 +13,7 @@ const About = () => {
       <PageHero eyebrow="About Us" title={about.title} subtitle={why.focus} image={heroImages?.slides?.[0]?.src || heroImages?.background} />
       <section className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-14 grid lg:grid-cols-2 gap-10 items-center">
         <Reveal>
-          <img src={about.image || '/website/material-cement.jpg'} alt="Building materials" className="w-full h-[360px] object-cover border border-black/10" />
+          <img src={about.image || '/website/material-cement.webp'} alt="Building materials" className="w-full h-[360px] object-cover border border-black/10" />
         </Reveal>
         <Reveal delay={0.1}>
           <div className="space-y-4 text-black/70 leading-relaxed text-sm md:text-base">

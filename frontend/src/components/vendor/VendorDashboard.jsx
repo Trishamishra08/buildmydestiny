@@ -6,8 +6,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import bannerImg1 from '../../assets/images/sadabharat_banner.png';
-import bannerImg2 from '../../assets/images/sadabharat_banner1.png';
+import bannerImg1 from '../../assets/images/sadabharat_banner.webp';
+import bannerImg2 from '../../assets/images/sadabharat_banner1.webp';
 import api from '../../utils/api';
 
 const StatCard = ({ title, value, trend, trendUp, date, icon: Icon, iconBg, iconColor, cardBg }) => {

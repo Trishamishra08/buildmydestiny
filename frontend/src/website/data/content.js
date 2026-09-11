@@ -128,27 +128,27 @@ export const benefits = [
   {
     title: 'Find Materials Easily',
     text: 'Discover cement, bricks, steel, blocks and more in one place.',
-    image: '/website/cutout-cement.png',
+    image: '/website/cutout-cement.webp',
   },
   {
     title: 'Nearby Options',
     text: 'Find material options around your project location.',
-    image: '/website/cutout-bricks.png',
+    image: '/website/cutout-bricks.webp',
   },
   {
     title: 'Save Time',
     text: 'Spend less time searching and contacting multiple suppliers.',
-    image: '/website/cutout-steel.png',
+    image: '/website/cutout-steel.webp',
   },
   {
     title: 'Simple Ordering',
     text: 'Search, choose and place your requirement with ease.',
-    image: '/website/cutout-blocks.png',
+    image: '/website/cutout-blocks.webp',
   },
   {
     title: 'Site Delivery',
     text: 'Your selected dealer coordinates delivery to your construction site.',
-    image: '/website/cutout-aggregates.png',
+    image: '/website/cutout-aggregates.webp',
   },
 ];
 
@@ -233,47 +233,47 @@ export const materials = {
     {
       name: 'Bricks',
       text: 'Reliable masonry materials for construction needs.',
-      image: '/website/cutout-bricks.png',
+      image: '/website/cutout-bricks.webp',
     },
     {
       name: 'AAC Blocks',
       text: 'Modern wall-building materials for efficient construction.',
-      image: '/website/cutout-blocks.png',
+      image: '/website/cutout-blocks.webp',
     },
     {
       name: 'Paver Blocks',
       text: 'Practical solutions for pathways and outdoor surfaces.',
-      image: '/website/cutout-pavers.png',
+      image: '/website/cutout-pavers.webp',
     },
     {
       name: 'Precast Products',
       text: 'Ready-to-use construction products for multiple applications.',
-      image: '/website/cutout-precast.png',
+      image: '/website/cutout-precast.webp',
     },
     {
       name: 'Cement',
       text: 'For foundations, structures and dependable construction.',
-      image: '/website/cutout-cement.png',
+      image: '/website/cutout-cement.webp',
     },
     {
       name: 'TMT Steel',
       text: 'Essential reinforcement material for structural strength.',
-      image: '/website/cutout-steel.png',
+      image: '/website/cutout-steel.webp',
     },
     {
       name: 'Sand',
       text: 'An essential material for multiple construction applications.',
-      image: '/website/cutout-sand.png',
+      image: '/website/cutout-sand.webp',
     },
     {
       name: 'Aggregates',
       text: 'Important materials for concrete and structural work.',
-      image: '/website/cutout-aggregates.png',
+      image: '/website/cutout-aggregates.webp',
     },
     {
       name: 'More Construction Materials',
       text: 'Explore additional categories or share your requirement.',
-      image: '/website/cutout-blocks.png',
+      image: '/website/cutout-blocks.webp',
     },
   ],
 };
@@ -314,7 +314,7 @@ export const appSection = {
 
 export const about = {
   title: 'We’re Making Construction Easier.',
-  image: '/website/cutout-cement.png',
+  image: '/website/cutout-cement.webp',
   paragraphs: [
     'Construction is a big part of everyday life — from building a home to developing commercial spaces and infrastructure.',
     'But getting the right materials at the right time can often become complicated.',
@@ -354,7 +354,7 @@ export const dealers = {
   title: 'Grow Your Construction-Material Business with Build My Destiny.',
   intro:
     'Join a growing platform designed to help construction-material businesses reach more customers and explore new opportunities.',
-  image: '/website/dealer-worker.jpg',
+  image: '/website/dealer-worker.webp',
   cta: 'Join as a Dealer',
   benefits: [
     {
@@ -444,31 +444,31 @@ export const isLegacyEcommercePath = (pathname) =>
   ECOMMERCE_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`));
 
 export const heroImages = {
-  background: '/website/banner_1.jpg?v=8',
+  background: '/website/banner_1.webp?v=9',
   slides: [
     {
-      src: '/website/banner_1.jpg?v=8',
-      mobileSrc: '/website/banner_1_m.jpg?v=8',
+      src: '/website/banner_1.webp?v=9',
+      mobileSrc: '/website/banner_1_m.webp?v=9',
       alt: 'Construction site materials at sunset',
     },
     {
-      src: '/website/banner_2.jpg?v=8',
-      mobileSrc: '/website/banner_2_m.jpg?v=8',
+      src: '/website/banner_2.webp?v=9',
+      mobileSrc: '/website/banner_2_m.webp?v=9',
       alt: 'Construction materials — rebar, cement, bricks and hard hat',
     },
     {
-      src: '/website/banner_3.jpg?v=8',
-      mobileSrc: '/website/banner_3_m.jpg?v=8',
+      src: '/website/banner_3.webp?v=9',
+      mobileSrc: '/website/banner_3_m.webp?v=9',
       alt: 'Construction materials at a building site',
     },
   ],
   collage: [
-    { src: '/website/cutout-cement.png', alt: 'Cement' },
-    { src: '/website/cutout-bricks.png', alt: 'Bricks' },
-    { src: '/website/cutout-steel.png', alt: 'TMT steel' },
-    { src: '/website/cutout-blocks.png', alt: 'AAC blocks' },
+    { src: '/website/cutout-cement.webp', alt: 'Cement' },
+    { src: '/website/cutout-bricks.webp', alt: 'Bricks' },
+    { src: '/website/cutout-steel.webp', alt: 'TMT steel' },
+    { src: '/website/cutout-blocks.webp', alt: 'AAC blocks' },
   ],
-  circle: '/website/cutout-cement.png',
+  circle: '/website/cutout-cement.webp',
 };
 
 export const notify = {
