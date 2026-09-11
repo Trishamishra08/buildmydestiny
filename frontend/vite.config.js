@@ -15,4 +15,4 @@ export default defineConfig({
     sourcemap: false,
     assetsInlineLimit: 0,
   },
-})
+});

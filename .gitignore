@@ -1,12 +1,9 @@
 node_modules
 dist
 dist-ssr
-.env
-.env.*
 !.env.example
 *.local
 .DS_Store
-.vscode
 .idea
 logs
 *.log
@@ -22,3 +19,4 @@ frontend/public/website/*_clean.jpg
 frontend/public/website/hero-banner-*.jpg
 frontend/public/website/banner_design_*.jpg
 frontend/src/assets/images/ChatGPT*.png
+config.bat
